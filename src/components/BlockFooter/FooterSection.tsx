@@ -20,7 +20,6 @@ interface FooterSectionProps {
     toggleExpand?: () => void;
 }
 
-
 const FooterSection: React.FC<FooterSectionProps> = ({
     title,
     links,

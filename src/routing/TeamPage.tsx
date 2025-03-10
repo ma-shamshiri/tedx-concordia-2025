@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Navigationbar } from "../components/Navigationbar";
 import { useTranslation } from "react-i18next";
 import { ComingSoonTeamPage } from "../components/ComingSoonTeamPage";
+import MyNavbar from "../components/MyNavbar";
 
 const TeamPage: React.FC = () => {
   const { t } = useTranslation();
@@ -26,7 +27,8 @@ const TeamPage: React.FC = () => {
         transition={{ duration: 1, ease: "easeInOut" }}
         onAnimationComplete={handleBoxLoad}
       >
-        <Navigationbar />
+        <MyNavbar />
+        {/* <Navigationbar /> */}
         <ComingSoonTeamPage />
         <BlockFooter />
       </motion.div>

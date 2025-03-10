@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Flex, Text, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import { motion } from 'framer-motion';
 
 const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
     eventStartTime,
@@ -27,9 +28,9 @@ const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
 
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
-    const numberFontSize = useBreakpointValue({ base: "2rem", md: "4rem", lg: "5.5rem" });
-    const textFontSize = useBreakpointValue({ base: "1rem", md: "1.5rem", lg: "2rem" });
-    const boxSize = useBreakpointValue({ base: "70px", md: "140px", lg: "150px" });
+    const numberFontSize = useBreakpointValue({ base: "2rem", md: "4rem", lg: "3.5rem" });
+    const textFontSize = useBreakpointValue({ base: "1rem", md: "1.5rem", lg: "1.7rem" });
+    const boxSize = useBreakpointValue({ base: "70px", md: "120px", lg: "110px" });
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -45,7 +46,7 @@ const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
     return (
         <Box
             position="absolute"
-            top="25%"
+            top={{ base: "5%", md: "10%", lg: "15%" }}
             left="50%"
             transform="translate(-50%, -50%)"
             margin="0 auto"
@@ -54,34 +55,43 @@ const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
         >
             <Flex justifyContent="center" gap={5} >
                 {["days", "hours", "minutes", "seconds"].map((unit, index) => (
-                    <Box
-                        key={index}
-                        display="flex"
-                        flexDirection="column"
-                        alignItems="center"
-                        justifyContent="center"
-                        width={boxSize}
-                        height={boxSize}
-                        bgColor={useColorModeValue("rgba(255, 0, 0, 0.9)", "rgba(255, 0, 0, 0.9)")}
-                        // bgColor={useColorModeValue("rgba(0, 124, 124, 0.8)", "rgba(255, 0, 0, 0.7)")}
-                        color="white"
-                        fontWeight="bold"
-                        borderRadius="12px"
-                        boxShadow="0 8px 16px rgba(0, 0, 0, 0.3)"
-                        transition="transform 0.3s ease, box-shadow 0.3s ease"
-                        _hover={{
-                            transform: "scale(1.05)",
-                            boxShadow: "0 12px 24px rgba(0, 0, 0, 0.4)",
+                    <motion.div
+                        whileHover={{ scale: 1.1, rotate: 7 }}
+                        whileTap={{ scale: 1, rotate: 0 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 5,
                         }}
-                        textAlign="center"
                     >
-                        <Text fontSize={numberFontSize}>
-                            {formatTimeUnit(timeLeft[unit as keyof typeof timeLeft])}
-                        </Text>
-                        <Text fontSize={textFontSize} textTransform="capitalize">
-                            {unit.charAt(0).toUpperCase() + unit.slice(1)}
-                        </Text>
-                    </Box>
+                        <Box
+                            key={index}
+                            display="flex"
+                            flexDirection="column"
+                            alignItems="center"
+                            justifyContent="center"
+                            width={boxSize}
+                            height={boxSize}
+                            bgColor={useColorModeValue("rgba(255, 0, 0, 0.7)", "rgba(255, 0, 0, 0.7)")}
+                            color="white"
+                            fontWeight="bold"
+                            borderRadius="12px"
+                            boxShadow="0 8px 16px rgba(0, 0, 0, 0.3)"
+                            transition="transform 0.3s ease, box-shadow 0.3s ease"
+                            _hover={{
+                                transform: "scale(1.05)",
+                                boxShadow: "0 12px 24px rgba(0, 0, 0, 0.4)",
+                            }}
+                            textAlign="center"
+                        >
+                            <Text fontSize={numberFontSize}>
+                                {formatTimeUnit(timeLeft[unit as keyof typeof timeLeft])}
+                            </Text>
+                            <Text fontSize={textFontSize} textTransform="capitalize">
+                                {unit.charAt(0).toUpperCase() + unit.slice(1)}
+                            </Text>
+                        </Box>
+                    </motion.div>
                 ))}
             </Flex>
         </Box>

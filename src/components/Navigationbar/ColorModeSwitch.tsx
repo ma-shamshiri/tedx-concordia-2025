@@ -7,8 +7,8 @@ const ColorModeSwitch = () => {
 
   const isLightMode = colorMode === "light";
 
-  const iconSize = useBreakpointValue({ base: "2rem", lg: "1.5rem" });
-  const iconContainerSize = useBreakpointValue({ base: "6rem", lg: "4rem" });
+  const iconSize = useBreakpointValue({ base: "1.8rem", lg: "1.8rem" });
+  const iconContainerSize = useBreakpointValue({ base: "5.2rem", lg: "5.2rem" });
 
   return (
     <Button

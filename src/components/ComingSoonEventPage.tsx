@@ -14,7 +14,7 @@ export const ComingSoonEventPage: React.FC = () => {
     return (
         <Box
             className="block block--white"
-            bg={useColorModeValue("#F0F0F0", "#0D1224")}
+            bg={useColorModeValue("#EFE8D6", "#0D1224")}
             overflow={"hidden"}
             width="100%"
             height="70vh"

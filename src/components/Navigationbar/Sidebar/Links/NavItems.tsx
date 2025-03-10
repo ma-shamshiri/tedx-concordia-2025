@@ -69,27 +69,27 @@ interface NavItem {
       label: "media",
       href: "/photos/",
     },
-    {
-      label: "joinUs",
-      href: "/joinus/",
-      children: [
-        {
-          label: "members",
-          subLabel: "membersSubLabel",
-          href: "/joinus/team/",
-        },
-        {
-          label: "speakers",
-          subLabel: "speakersSubLabel",
-          href: "/joinus/speaker/",
-        },
-        {
-          label: "sponsors",
-          subLabel: "sponsorsSubLabel",
-          href: "/joinus/sponsor/",
-        },
-      ],
-    },
+    // {
+    //   label: "joinUs",
+    //   href: "/joinus/",
+    //   children: [
+    //     {
+    //       label: "members",
+    //       subLabel: "membersSubLabel",
+    //       href: "/joinus/team/",
+    //     },
+    //     {
+    //       label: "speakers",
+    //       subLabel: "speakersSubLabel",
+    //       href: "/joinus/speaker/",
+    //     },
+    //     {
+    //       label: "sponsors",
+    //       subLabel: "sponsorsSubLabel",
+    //       href: "/joinus/sponsor/",
+    //     },
+    //   ],
+    // },
   ];
   
   export default NAV_ITEMS;

@@ -263,8 +263,10 @@ import insta10 from "./assets/images/insta10.png";
 import facebook01 from "./assets/images/facebook01.png";
 import facebook02 from "./assets/images/facebook02.png";
 import concordiaHero13 from "./assets/images/concordiaHero13.png";
+import salon5 from "./assets/images/salon5.jpg";
 
 export {
+    salon5,
     concordiaHero13,
     linkedin01,
     linkedin02,

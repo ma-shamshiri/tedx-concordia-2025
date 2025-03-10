@@ -36,35 +36,35 @@ export const BlockFooter: React.FC = () => {
     {
       title: "Event",
       links: [
-        { label: "Ticket", href: "/photos" },
-        { label: "Date & Time", href: "/team" },
-        { label: "Photos", href: "/photos" },
-        { label: "Talks", href: "/photos" },
+        { label: "Ticket", href: "/event" },
+        { label: "Date & Time", href: "/event" },
+        // { label: "Photos", href: "/photos" },
+        // { label: "Talks", href: "/photos" },
       ],
     },
     {
       title: "Our Community",
       links: [
-        { label: "Organizing Team", href: "/joinus/team" },
-        { label: "Esteemed Speakers", href: "/joinus/speaker" },
-        { label: "Generous Sponsors", href: "/joinus/sponsor" },
+        { label: "Organizing Team", href: "/team" },
+        { label: "Esteemed Speakers", href: "/speakers" },
+        // { label: "Generous Sponsors", href: "/sponsors" },
       ],
     },
-    {
-      title: "Join Us",
-      links: [
-        { label: "Organizer", href: "/joinus/team" },
-        { label: "Speaker", href: "/joinus/speaker" },
-        { label: "Sponsor", href: "/joinus/sponsor" },
-      ],
-    },
+    // {
+    //   title: "Join Us",
+    //   links: [
+    //     { label: "Organizer", href: "/joinus/team" },
+    //     { label: "Speaker", href: "/joinus/speaker" },
+    //     { label: "Sponsor", href: "/joinus/sponsor" },
+    //   ],
+    // },
     {
       title: "Follow Us",
       links: [
-        { label: "LinkedIn", href: "https://www.linkedin.com", target: "_blank" },
-        { label: "Instagram", href: "https://www.instagram.com", target: "_blank" },
-        { label: "Twitter", href: "https://twitter.com", target: "_blank" },
-        { label: "Facebook", href: "https://facebook.com", target: "_blank" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/tedxconcordiauniversity/", target: "_blank" },
+        { label: "Instagram", href: "https://www.instagram.com/tedxconcordiauniversity?igsh=b3NpZDF1bTg3bXo2", target: "_blank" },
+        // { label: "Twitter", href: "https://twitter.com", target: "_blank" },
+        // { label: "Facebook", href: "https://facebook.com", target: "_blank" },
       ],
     },
   ];

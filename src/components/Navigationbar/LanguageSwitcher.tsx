@@ -55,8 +55,8 @@ const LanguageSwitcher: React.FC = () => {
                 variant={i18n.language === "en" ? "solid" : "outline"}
                 onClick={() => changeLanguage("en")}
                 transition="background 0.3s"
-                width={{ base: "40px", lg: "30px" }}
-                height={{ base: "40px", lg: "30px" }}
+                width={{ base: "40px", lg: "40px" }}
+                height={{ base: "40px", lg: "40px" }}
                 borderRadius="lg"
                 colorScheme={useColorModeValue("red", "teal")}
                 _hover={{
@@ -72,8 +72,8 @@ const LanguageSwitcher: React.FC = () => {
                 variant={i18n.language === "fr" ? "solid" : "outline"}
                 onClick={() => changeLanguage("fr")}
                 transition="background 0.3s"
-                width={{ base: "40px", lg: "30px" }}
-                height={{ base: "40px", lg: "30px" }}
+                width={{ base: "40px", lg: "40px" }}
+                height={{ base: "40px", lg: "40px" }}
                 borderRadius="lg"
                 colorScheme={useColorModeValue("red", "teal")}
                 _hover={{

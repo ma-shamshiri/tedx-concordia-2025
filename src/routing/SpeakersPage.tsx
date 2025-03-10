@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BlockFooter } from "../components/BlockFooter";
 import { motion } from "framer-motion";
-import { Navigationbar } from "../components/Navigationbar";
+// import { Navigationbar } from "../components/Navigationbar";
 import { useTranslation } from "react-i18next";
 import { ComingSoonSpeakersPage } from "../components/ComingSoonSpeakersPage";
+import MyNavbar from "../components/MyNavbar";
+import BlockSpeakers from "../components/BlockSpeakers";
 
 const SpeakersPage: React.FC = () => {
   const { t } = useTranslation();
@@ -26,8 +28,10 @@ const SpeakersPage: React.FC = () => {
         transition={{ duration: 1, ease: "easeInOut" }}
         onAnimationComplete={handleBoxLoad}
       >
-        <Navigationbar />
-        <ComingSoonSpeakersPage />
+        <MyNavbar />
+
+        {/* <ComingSoonSpeakersPage /> */}
+        <BlockSpeakers />
         <BlockFooter />
       </motion.div>
     </>

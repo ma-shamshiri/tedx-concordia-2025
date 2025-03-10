@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BlockFooter } from "../components/BlockFooter"
-import { Navigationbar } from "../components/Navigationbar";
 import { BlockEventMetrics } from "../components/BlockEventMetrics";
 import OrkenWorld from "../components/OrkenWorld/OrkenWorld";
-import BlockLanding from "../components/BlockLanding";
+import MyNavbar from "../components/MyNavbar";
+import BlockEvent from "../components/BlockEvent";
+// import BlockLanding from "../components/BlockLanding";
 
 const HomePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const eventStartTime = new Date("2025-02-28T09:00:00-08:00");
 
   useEffect(() => {
     const delay = setTimeout(() => {
@@ -19,8 +19,9 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <Navigationbar />
-      <BlockLanding />
+      <MyNavbar />
+      {/* <BlockLanding /> */}
+      <BlockEvent />
       <OrkenWorld />
       <BlockEventMetrics />
       <BlockFooter />

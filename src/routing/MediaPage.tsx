@@ -3,6 +3,7 @@ import { BlockFooter } from "../components/BlockFooter";
 import { motion } from "framer-motion";
 import { Navigationbar } from "../components/Navigationbar";
 import { ComingSoonMediaPage } from "../components/ComingSoonMediaPage";
+import MyNavbar from "../components/MyNavbar";
 
 const MediaPage: React.FC = () => {
   const [boxLoaded, setBoxLoaded] = useState(false);
@@ -23,7 +24,8 @@ const MediaPage: React.FC = () => {
         transition={{ duration: 1, ease: "easeInOut" }}
         onAnimationComplete={handleBoxLoad}
       >
-        <Navigationbar />
+        <MyNavbar />
+        {/* <Navigationbar /> */}
         <ComingSoonMediaPage />
         <BlockFooter />
       </motion.div>
