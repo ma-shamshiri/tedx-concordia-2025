@@ -30,8 +30,8 @@ const SpeakersPage: React.FC = () => {
       >
         <MyNavbar />
 
-        {/* <ComingSoonSpeakersPage /> */}
-        <BlockSpeakers />
+        <ComingSoonSpeakersPage />
+        {/* <BlockSpeakers /> */}
         <BlockFooter />
       </motion.div>
     </>

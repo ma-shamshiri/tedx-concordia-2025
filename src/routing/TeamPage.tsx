@@ -28,7 +28,6 @@ const TeamPage: React.FC = () => {
         onAnimationComplete={handleBoxLoad}
       >
         <MyNavbar />
-        {/* <Navigationbar /> */}
         <ComingSoonTeamPage />
         <BlockFooter />
       </motion.div>
