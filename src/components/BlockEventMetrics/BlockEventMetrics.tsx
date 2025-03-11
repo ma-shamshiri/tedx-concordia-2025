@@ -76,7 +76,7 @@ export const BlockEventMetrics: React.FC = () => {
         maxWidth={{ md: "550px", lg: "110rem" }}
       >
         <SimpleGrid
-          columns={{ base: 2, sm: 2, md: 2, lg: 4 }}
+          columns={{ base: 1, sm: 1, md: 3, lg: 3 }}
           spacing={{ base: "3rem", md: "4rem", lg: "3rem" }}
           padding="3rem 0"
           alignItems="center"
@@ -91,13 +91,6 @@ export const BlockEventMetrics: React.FC = () => {
               hasPlusSign: false,
             },
             {
-              endNumber: 6,
-              text: t("Core Team"),
-              numberColor: "#FF5FCC",
-              borderColor: "#EF40BA",
-              hasPlusSign: false,
-            },
-            {
               endNumber: 100,
               text: t("Attendees"),
               numberColor: "#A679FF",
@@ -105,12 +98,19 @@ export const BlockEventMetrics: React.FC = () => {
               hasPlusSign: true,
             },
             {
-              endNumber: 3,
-              text: t("Sponsors"),
-              numberColor: "#FF9F24",
-              borderColor: "#FF9F24",
+              endNumber: 6,
+              text: t("Core Team"),
+              numberColor: "#FF5FCC",
+              borderColor: "#EF40BA",
               hasPlusSign: false,
             },
+            // {
+            //   endNumber: 3,
+            //   text: t("Sponsors"),
+            //   numberColor: "#FF9F24",
+            //   borderColor: "#FF9F24",
+            //   hasPlusSign: false,
+            // },
           ].map(({ endNumber, text, numberColor, borderColor, hasPlusSign }, index) => (
             <MetricCard
               key={index}
