@@ -84,14 +84,14 @@ export const BlockEventMetrics: React.FC = () => {
         >
           {[
             {
-              endNumber: 8,
+              endNumber: 6,
               text: t("Speakers"),
               numberColor: "#4CCFAF",
               borderColor: "#409F8F",
               hasPlusSign: false,
             },
             {
-              endNumber: 5,
+              endNumber: 6,
               text: t("Core Team"),
               numberColor: "#FF5FCC",
               borderColor: "#EF40BA",
@@ -105,7 +105,7 @@ export const BlockEventMetrics: React.FC = () => {
               hasPlusSign: true,
             },
             {
-              endNumber: 10,
+              endNumber: 3,
               text: t("Sponsors"),
               numberColor: "#FF9F24",
               borderColor: "#FF9F24",
