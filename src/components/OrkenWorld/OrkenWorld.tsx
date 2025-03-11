@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./styles.css";
 import { Box, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import { gsap } from "gsap";
-import { ted, tedx, tedxavelorne } from "../../assets";
+import { ted, tedx, tedxavelorne, tedxconcordia } from "../../assets";
 import { useTranslation } from "react-i18next";
 import bg from "./assets/bg.jpg";
 import Lenis from "lenis";
@@ -33,7 +33,7 @@ const OrkenWorld: React.FC = () => {
             id: 3,
             title: "TEDxConcordiaUniversity",
             description: "tedxConcordiaUniversityDescription",
-            img: tedxavelorne,
+            img: tedxconcordia,
             bgColor: useColorModeValue("gray.200", "gray.800"),
             linkUrl: "https://www.ted.com/tedx/events/59606",
         },
@@ -262,7 +262,7 @@ const OrkenWorld: React.FC = () => {
                             key={index}
                             className="card"
                             position="relative"
-                            width={{ base: "33rem", lg: "55rem" }}
+                            width={{ base: "34rem", lg: "50rem" }}
                             bg={card.bgColor}
                             display="flex"
                             flexDirection="column"

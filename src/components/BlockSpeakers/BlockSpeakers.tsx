@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     Box,
-    Heading,
     Text,
     SimpleGrid,
     Flex,
     useColorModeValue,
-    keyframes,
 } from "@chakra-ui/react";
 import { speakersData } from "./data";
 import FlipCard from "./FlipCard";
-import { amin } from "../../assets";
+import { useTranslation } from "react-i18next";
 
 // Wave background at the bottom
 const WaveBackground: React.FC = () => {
-    const waveFill = useColorModeValue("#912338", "#CB0000");
+    const waveFill = useColorModeValue("#CB0000", "#CB0000");
 
     return (
         <Box
@@ -36,100 +34,16 @@ const WaveBackground: React.FC = () => {
     );
 };
 
-// Subtle floating animation for the heading
-const floatAnimation = keyframes`
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
-`;
-
-// FlipCard component for each speaker
-interface SpeakerFlipCardProps {
-    index: number;
-    name: string;
-    title: string;
-    image: string;
-    headingGradient: string;
-    onClick: (index: number) => void;
-}
-
-const SpeakerFlipCard: React.FC<SpeakerFlipCardProps> = ({
-    index,
-    name,
-    title,
-    image,
-    headingGradient,
-    onClick,
-}) => {
-    const frontBg = useColorModeValue("white", "gray.700");
-    const frontHoverBg = useColorModeValue("gray.100", "gray.600");
-    const backBg = useColorModeValue("rgba(255,255,255,0.9)", "rgba(0,0,0,0.7)");
-    const textColor = useColorModeValue("gray.700", "gray.100");
-
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+const BlockSpeakers: React.FC = () => {
+    const { t } = useTranslation();
 
     return (
         <Box
-            role="group"
             position="relative"
-            w="100%"
-            h="320px"
+            minH="100vh"
+            bg={useColorModeValue("gray.50", "gray.900")}
+            overflow="hidden"
         >
-            {/* Inner container that will rotate */}
-            <Box
-                position="absolute"
-                w="100%"
-                h="100%"
-            >
-                <Box
-                    className="image"
-                    position="relative"
-                    cursor="pointer"
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    onClick={() => onClick(index)}
-                    borderWidth="1px"
-                    borderColor={useColorModeValue("#000", "#fff")}
-                    borderRadius="10px"
-                >
-                    <FlipCard
-                        frontImageHref={amin}
-                        backImageHref={amin}
-                    />
-                    <Box p={4}>
-                        <Heading
-                            as="h3"
-                            fontSize="xl"
-                            mb={1}
-                            bgGradient={headingGradient}
-                            bgClip="text"
-                        >
-                            {name}
-                        </Heading>
-                        <Text fontSize="sm" color={textColor}>
-                            {title}
-                        </Text>
-                    </Box>
-                </Box>
-            </Box>
-        </Box>
-    );
-};
-
-const BlockSpeakers: React.FC = () => {
-    const bg = useColorModeValue("gray.50", "#000");
-    const headingGradient = useColorModeValue(
-        "linear(to-r, teal.500, blue.500)",
-        "linear(to-r, teal.200, blue.300)"
-    );
-
-    const handleCardClick = (slug: string) => {
-        // Navigate to speaker's dedicated page
-        window.location.href = `/speakers/${slug}`;
-    };
-
-    return (
-        <Box position="relative" minH="100vh" bg={bg} overflow="hidden">
             {/* Wave background at the bottom */}
             <WaveBackground />
 
@@ -143,48 +57,65 @@ const BlockSpeakers: React.FC = () => {
                 zIndex={2}
                 position="relative"
             >
-                <Heading
-                    fontSize={{ base: "3xl", md: "5xl" }}
-                    bgGradient={headingGradient}
-                    bgClip="text"
-                    mb={4}
-                    animation={`${floatAnimation} 5s ease-in-out infinite`}
+                <Box
+                    className="block__header"
+                    textAlign="center"
+                    margin="0 auto"
                 >
-                    Meet Our Speakers
-                </Heading>
-
-                <Text
-                    fontSize={{ base: "md", md: "lg" }}
-                    color={useColorModeValue("gray.600", "gray.200")}
-                    maxW="600px"
-                    mb={10}
-                >
-                    Our amazing lineup of speakers will share their unique perspectives,
-                    stories, and insights. Hover over each speaker card to see more details
-                    and click to visit their page!
-                </Text>
+                    <Text
+                        color={useColorModeValue('gray.800', '#16F8B6')}
+                        marginBottom="2rem"
+                        marginTop="0"
+                        fontSize={{ base: '2.8rem', lg: '4rem' }}
+                        fontWeight="1000"
+                        fontFamily="Big Shoulders Display"
+                        letterSpacing="0.5px"
+                        lineHeight="1.1"
+                    >
+                        {t("speakersPageTitle")}
+                    </Text>
+                    <Text
+                        color={useColorModeValue('gray.700', 'white')}
+                        marginBottom="4rem"
+                        marginTop="0"
+                        fontSize={{ base: '1.5rem', lg: '2.3rem' }}
+                        lineHeight="1.5"
+                    >
+                        {t("speakersPageSubTitle")}
+                    </Text>
+                </Box>
 
                 {/* Staggered Grid Layout */}
                 <SimpleGrid
-                    columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
-                    spacing={8}
+                    columns={{ base: 1, md: 3, lg: 3 }}
+                    spacingX="5rem"
+                    spacingY={{ base: "12rem", lg: "10rem" }}
                     maxW="1200px"
-                    w="100%"
+                    width="100%"
+                    height='fit-content'
+                    position={"relative"}
+                    paddingX={{ base: "1rem", lg: "initial" }}
+                    paddingTop={{ base: "2rem", lg: "2rem" }}
+                    paddingBottom={{ base: "15rem", lg: "40rem" }}
                 >
                     {speakersData.map((speaker, index) => {
-                        // Create a vertical offset to achieve a staggered effect
-                        // for an eye-catching, less "uniform" grid
-                        const offset = index % 2 === 0 ? "0px" : "40px";
+                        const offset = index % 2 === 0 ? "0px" : "80px";
 
                         return (
-                            <Box key={speaker.id} mt={offset}>
-                                <SpeakerFlipCard
-                                    index={index}
+                            <Box
+                                key={speaker.id}
+                                marginTop={{ base: "initial", lg: offset }}
+                                borderRadius="10px"
+                            >
+                                <FlipCard
+                                    id={index}
                                     name={speaker.name}
                                     title={speaker.title}
                                     image={speaker.image}
-                                    headingGradient={headingGradient}
-                                    onClick={() => handleCardClick(speaker.slug)}
+                                    profileHref={speaker.profileHref}
+                                    linkedinAddress={speaker.linkedinAddress}
+                                    emailAddress={speaker.emailAddress}
+                                    twitterAddress={speaker.twitterAddress}
                                 />
                             </Box>
                         );

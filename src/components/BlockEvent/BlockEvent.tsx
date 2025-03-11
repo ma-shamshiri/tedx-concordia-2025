@@ -4,31 +4,22 @@ import React from "react";
 import {
   Box,
   Flex,
-  Heading,
   Text,
   Button,
-  keyframes,
   useColorModeValue,
   SimpleGrid,
   VStack,
 } from "@chakra-ui/react";
-import { concordiaHero13, salon5 } from "../../assets";
+import { salon5 } from "../../assets";
 import { useTranslation } from "react-i18next";
-import CountdownTimer from "../BlockLanding/CountdownTimer";
 import Typed from "react-typed";
+import CountdownTimer from "../CountdownTimer";
 
 
 const BlockEvent: React.FC = () => {
   const { t } = useTranslation();
 
-  const eventStartTime = new Date("2025-03-28T09:00:00-08:00");
-
-  const eventData = {
-    date: "March 30, 2025",
-    time: "10:00am - 2:00pm",
-    location: "Concordia University Campus, Montreal, QC",
-    venueImage: concordiaHero13,
-  };
+  const eventStartTime = new Date("2025-03-30T09:00:00-08:00");
 
   const tickets = [
     {
@@ -57,7 +48,7 @@ const BlockEvent: React.FC = () => {
     "linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))"
   );
   const glassBg = useColorModeValue("rgba(0, 0, 0, 0.5)", "rgba(0, 0, 0, 0.5)");
-  const waveFill = useColorModeValue("#CB0000", "#CB0000");
+  const waveFill = useColorModeValue("#912338", "#232323");
 
   return (
     <Box
@@ -66,7 +57,7 @@ const BlockEvent: React.FC = () => {
       minHeight="93vh"
       paddingBottom="4rem"
       bgColor={useColorModeValue("gray.50", "gray.800")}
-      backgroundImage={`url(${eventData.venueImage})`}
+      backgroundImage={salon5}
       backgroundSize="cover"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
@@ -127,6 +118,7 @@ const BlockEvent: React.FC = () => {
             fontSize={{ base: "3rem", md: "5rem" }}
             fontWeight="bold"
             fontFamily="Big Shoulders Display"
+            letterSpacing="0.7px"
             color="#fff"
           >
             <Typed
@@ -139,8 +131,11 @@ const BlockEvent: React.FC = () => {
           </Box>
 
           <Text
-            fontSize={{ base: "1.8rem", md: "2.5rem" }}
-            color="#fff"
+            fontSize={{ base: "2rem", md: "3rem" }}
+            fontWeight="bold"
+            fontFamily="Big Shoulders Display"
+            letterSpacing="0.7px"
+            color="#09e859"
             marginBottom="3rem"
           >
             10:00 AM - 2:00 PM
@@ -174,7 +169,7 @@ const BlockEvent: React.FC = () => {
                 padding="2rem"
                 transition="transform 0.3s ease, box-shadow 0.3s ease"
                 _hover={{
-                  transform: "translateY(-5px)",
+                  transform: "translateY(-10px)",
                   boxShadow: "0 0 15px rgba(0,0,0,0.3)",
                 }}
               >

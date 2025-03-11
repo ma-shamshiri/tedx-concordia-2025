@@ -138,9 +138,11 @@ const MyNavbar: React.FC = () => {
                         justifyContent="center"
                         alignItems={{ base: "center", lg: "initial" }}
                         paddingY="2.5rem"
-                        gap={{ base: "2rem", lg: "5rem" }}
+                        gap={{ base: "1rem", lg: "5rem" }}
                         color={useColorModeValue("#000", "#fff")}
-                        fontSize="2rem"
+                        fontSize={{base:"2.5rem", lg:"2.8rem"}}
+                        fontWeight="semibold"
+                        fontFamily="Big Shoulders Display"
                     >
                         <Link as={RouterLink} to={"/"} cursor="pointer">
                             <SliderText text={t("home")} />

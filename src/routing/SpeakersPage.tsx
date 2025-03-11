@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BlockFooter } from "../components/BlockFooter";
 import { motion } from "framer-motion";
-// import { Navigationbar } from "../components/Navigationbar";
 import { useTranslation } from "react-i18next";
-import { ComingSoonSpeakersPage } from "../components/ComingSoonSpeakersPage";
 import MyNavbar from "../components/MyNavbar";
 import BlockSpeakers from "../components/BlockSpeakers";
+import { amin } from "../assets";
+import BlockSpeakerProfiles from "../components/BlockSpeakerProfiles";
 
 const SpeakersPage: React.FC = () => {
   const { t } = useTranslation();
@@ -29,9 +29,7 @@ const SpeakersPage: React.FC = () => {
         onAnimationComplete={handleBoxLoad}
       >
         <MyNavbar />
-
-        <ComingSoonSpeakersPage />
-        {/* <BlockSpeakers /> */}
+        <BlockSpeakers />
         <BlockFooter />
       </motion.div>
     </>

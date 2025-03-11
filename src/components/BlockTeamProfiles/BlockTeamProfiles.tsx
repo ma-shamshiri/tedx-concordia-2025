@@ -1,389 +1,249 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
-  Box,
-  Flex,
-  ResponsiveValue,
-  useColorModeValue,
-  Image,
-  Text,
-  HStack,
-  IconButton,
-  useBreakpointValue,
-  Icon,
-  useColorMode,
+    Box,
+    Flex,
+    Text,
+    Image,
+    useColorModeValue,
+    SystemStyleObject,
+    VStack,
+    HStack,
+    IconButton,
+    useBreakpointValue,
 } from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
-import { motion, Variants } from "framer-motion";
-import { BsChatRightQuoteFill, BsLinkedin } from "react-icons/bs";
-import { SiTed } from "react-icons/si";
-import { IconType } from "react-icons";
+import { BsLinkedin } from "react-icons/bs";
 import { TfiEmail } from "react-icons/tfi";
-import { FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 interface BlockTeamProfilesProps {
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  title: string;
-  role: string;
-  imageSrc?: string;
-  badgeSrc: string;
-  icon: IconType;
-  linkedinHref: string;
-  twitterHref: string;
-  tedHref: string;
-  quoteText: string;
-  quoteTopMargin?: ResponsiveValue<string>;
-  pageHeight?: ResponsiveValue<string>;
+    name: string;
+    title: string;
+    biography: string;
+    image: string;
+    linkedinAddress: string;
+    emailAddress: string;
+    twitterAddress: string;
 }
 
-const textVariants = {
-  initial: {
-    x: -500,
-    opacity: 0,
-  },
-  animate: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 1,
-      staggerChildren: 0.1,
-    },
-  },
-  scrollButton: {
-    opacity: 0,
-    y: 10,
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-    },
-  },
-};
-
-const sliderVariants: Variants = {
-  initial: {
-    x: 0,
-  },
-  animate: {
-    x: "-220%",
-    transition: {
-      repeat: Infinity,
-      repeatType: "mirror",
-      duration: 20,
-    },
-  },
-};
-
-export const BlockTeamProfiles: React.FC<BlockTeamProfilesProps> = ({
-  firstName,
-  lastName,
-  fullName,
-  title,
-  role,
-  imageSrc,
-  badgeSrc,
-  icon: IconComponent,
-  linkedinHref,
-  twitterHref,
-  tedHref,
-  quoteText,
-  quoteTopMargin,
-  pageHeight = { base: "100vh", lg: "100vh" },
+const BlockTeamProfiles: React.FC<BlockTeamProfilesProps> = ({
+    name,
+    title,
+    biography,
+    image,
+    linkedinAddress,
+    emailAddress,
+    twitterAddress
 }) => {
-  const [isPageLoaded, setIsPageLoaded] = useState(false);
 
-  const { t } = useTranslation();
+    const iconSize = useBreakpointValue({ base: "2.5rem", lg: "2.5rem" });
+    const iconBoxSize = useBreakpointValue({ base: "5rem", lg: "5rem" });
 
-  const { colorMode } = useColorMode();
-  const isDarkMode = colorMode === "dark";
+    const waveFill = useColorModeValue("#f0f4f8", "#2D3748");
+    const radialGradient = useColorModeValue(
+        "radial-gradient(circle at top, teal.50, teal.100, teal.200)",
+        "radial-gradient(circle at top, gray.700, gray.800, gray.900)"
+    );
+    const cardBg = useColorModeValue("whiteAlpha.900", "blackAlpha.700");
+    const textColor = useColorModeValue("gray.800", "gray.200");
+    const headingGradient = useColorModeValue(
+        "linear(to-r, teal.400, blue.400)",
+        "linear(to-r, teal.200, blue.300)"
+    );
 
-  const iconSize = useBreakpointValue({ base: "3.5rem", lg: "3rem" });
-  const titleIconSize = useBreakpointValue({ base: "5rem", lg: "4rem" });
-  const tedIconSize = useBreakpointValue({ base: "5rem", lg: "4rem" });
-  const quoteIconSize = useBreakpointValue({ base: "4rem", lg: "4rem" });
-  const [boxLoaded, setBoxLoaded] = useState(false);
+    const customScrollBar: SystemStyleObject = {
+        "&::-webkit-scrollbar": {
+            width: "6px",
+        },
+        "&::-webkit-scrollbar-track": {
+            background: "transparent",
+        },
+        "&::-webkit-scrollbar-thumb": {
+            background: useColorModeValue("#CBD5E0", "#4A5568"),
+            borderRadius: "3px",
+        },
+    };
 
-  const handleBoxLoad = () => {
-    setBoxLoaded(true);
-  };
-
-  useEffect(() => {
-    // Simulate a delay before setting isPageLoaded to true
-    const delay = setTimeout(() => {
-      setIsPageLoaded(true);
-    }, 0.2);
-
-    // Cleanup function to clear the timeout in case the component unmounts before the delay is complete
-    return () => clearTimeout(delay);
-  }, []);
-
-  return (
-    <Flex
-      direction={{ base: "column", md: "column", lg: "row" }}
-      // height={{ base: "initial", lg: "calc(100vh - 70px)" }}
-      height={{ base: "initial", lg: "fit-content" }}
-      minHeight={{ base: "initial", lg: "100vh" }}
-      //   height="calc(200vh - 70px)"
-      width="100%"
-      overflow="hidden"
-      position="relative"
-      background={{
-        base: useColorModeValue(
-          "linear-gradient(180deg, #7854FE, #4BFD83)",
-          "linear-gradient(180deg, #000000, #0D1224, #271C4B)"
-        ),
-        lg: useColorModeValue(
-          "linear-gradient(90deg, #7854FE, #4BFD83)",
-          "linear-gradient(180deg, #000000, #0D1224, #271C4B)"
-        ),
-      }}
-      zIndex={0}
-    >
-      <Box
-        className="sliding_text_container"
-        position="absolute"
-        fontSize="50vh"
-        bottom="-120px"
-        whiteSpace="nowrap"
-        color={isDarkMode ? "gray" : "#ffffff"}
-        opacity={isDarkMode ? "0.1" : "0.1"}
-        width="100%"
-        fontWeight="bold"
-        zIndex={1}
-      >
-        <motion.div
-          variants={sliderVariants}
-          initial="initial"
-          animate="animate"
-        >
-          {fullName}
-        </motion.div>
-      </Box>
-
-      {/* Left Section */}
-      <Box
-        className="left-section"
-        display="flex"
-        flex={{ base: "1", lg: "1" }}
-        justifyContent="center"
-        alignItems="flex-start"
-        zIndex={2}
-        paddingTop="10rem"
-      // border="1px solid red"
-      >
+    return (
         <Box
-          className="profile_info_container"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          padding="2rem"
+            position="relative"
+            width="100%"
+            minH="100vh"
+            bg={radialGradient}
+            overflow="hidden"
         >
-          <Box
-            className="text_container"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-          >
-            {/* <motion.div
-              variants={textVariants}
-              initial="initial"
-              animate="animate"
-            > */}
-            <Text
-              as="h2"
-              fontSize={{ base: "2rem", lg: "2.2rem" }}
-              color={useColorModeValue("#fff", "#16F8B6")}
-              letterSpacing="3px"
-              textAlign={{ base: "center", lg: "center" }}
-              margin={0}
-              padding="1rem 0"
-              // textTransform="uppercase"
-              opacity={isPageLoaded ? "1" : "0"}
-              transition="opacity 0.5s ease-in-out 0.2s"
-            >
-              {role}
-            </Text>
-            <Text
-              as="h1"
-              color={useColorModeValue("#000", "silver")}
-              textAlign={{ base: "center", lg: "center" }}
-              margin={0}
-              padding="1rem 0"
-              textTransform="uppercase"
-              lineHeight="5.5rem"
-              maxWidth={{ base: "initial", lg: "65rem" }}
-              opacity={isPageLoaded ? "1" : "0"}
-              transition="opacity 0.5s ease-in-out 0.5s"
-            >
-              <Box as="span" fontSize={{ base: "3.5rem", lg: "4rem" }}>
-                {firstName}
-              </Box>
-              <Box as="span"> </Box>
-              <Box
-                as="span"
-                fontSize={{ base: "3.5rem", lg: "4rem" }}
-                fontWeight="bold"
-                color={useColorModeValue("#000", "#fff")}
-              >
-                {lastName}
-              </Box>
-            </Text>
+            {/* --- Top Wave --- */}
             <Box
-              className="title_icon_container"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              paddingTop="3rem"
-              paddingBottom="1.5rem"
-              opacity={isPageLoaded ? "1" : "0"}
-              transition="opacity 0.5s ease-in-out 0.8s"
+                as="svg"
+                viewBox="0 0 1440 320"
+                position="absolute"
+                top={0}
+                left={0}
+                w="100%"
+                h="auto"
+                zIndex={1}
             >
-              <Icon
-                className="title_container"
-                as={IconComponent}
-                boxSize={titleIconSize}
-                color={useColorModeValue("#000", "#fff")}
-              />
+                <path
+                    fill={waveFill}
+                    fillOpacity="1"
+                    d="M0,96L48,128C96,160,192,224,288,224C384,224,480,160,576,149.3C672,139,768,181,864,202.7C960,224,1056,224,1152,192C1248,160,1344,96,1392,64L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+                />
             </Box>
-            <Text
-              as="h2"
-              fontSize={{ base: "2rem", lg: "2rem" }}
-              color={useColorModeValue("#0B0E36", "#f926ae")}
-              letterSpacing="2px"
-              lineHeight={{ base: "2.5rem", lg: "3.5rem" }}
-              textAlign={{ base: "center", lg: "center" }}
-              margin={0}
-              paddingBottom="1rem"
-              maxWidth={{ base: "initial", lg: "65rem" }}
-              opacity={isPageLoaded ? "1" : "0"}
-              transition="opacity 0.5s ease-in-out 1.1s"
+
+            {/* --- Bottom Wave --- */}
+            <Box
+                as="svg"
+                viewBox="0 0 1440 320"
+                position="absolute"
+                bottom={0}
+                left={0}
+                w="100%"
+                h="auto"
+                zIndex={1}
             >
-              {title}
-            </Text>
+                <path
+                    fill={waveFill}
+                    fillOpacity="1"
+                    d="M0,256L80,229.3C160,203,320,149,480,149.3C640,149,800,203,960,197.3C1120,192,1280,128,1360,96L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+                />
+            </Box>
+
+            {/* Main Content Container */}
             <Flex
-              className="icon_container"
-              justifyContent="center"
-              opacity={isPageLoaded ? "1" : "0"}
-              transition="opacity 0.5s ease-in-out 1.4s"
+                direction="column"
+                align="center"
+                justify="center"
+                position="relative"
+                zIndex={5}
+                width="100%"
+                minH="100vh"
+                paddingX="2rem"
+                paddingY={{ base: "5rem", lg: "5rem" }}
             >
-              <HStack
-                spacing={{ base: "6", lg: "6" }}
-                justifyContent={"center"}
-              >
-                <Box as="a" href={linkedinHref} target="_blank" rel="noopener noreferrer">
-                  <IconButton
-                    aria-label="linkedin"
-                    variant="ghost"
-                    size="xl"
-                    icon={<BsLinkedin size={iconSize} />}
-                    color={useColorModeValue("gray.800", "gray.200")}
-                    _hover={{
-                      bg: useColorModeValue("gray.800", "gray.200"),
-                      color: useColorModeValue("gray.100", "gray.700"),
-                    }}
-                    isRound
-                    boxSize={{ base: "6.5rem", lg: "6rem" }}
-                    opacity="1"
-                  />
-                </Box>
-                <Box as="a" href={twitterHref} target="_blank" rel="noopener noreferrer">
-                  <IconButton
-                    aria-label="twitter"
-                    variant="ghost"
-                    size="xl"
-                    icon={<TfiEmail size={iconSize} />}
-                    color={useColorModeValue("gray.800", "gray.200")}
-                    _hover={{
-                      bg: useColorModeValue("gray.800", "gray.200"),
-                      color: useColorModeValue("gray.100", "gray.700"),
-                    }}
-                    isRound
-                    boxSize={{ base: "6.5rem", lg: "6rem" }}
-                    opacity="1"
-                  />
-                </Box>
-                <Box as="a" href={tedHref} target="_blank" rel="noopener noreferrer">
-                  <IconButton
-                    aria-label="ted"
-                    variant="ghost"
-                    size="xl"
-                    icon={<FaInstagram size={tedIconSize} />}
-                    color={useColorModeValue("#gray.800", "gray.200")}
-                    _hover={{
-                      bg: useColorModeValue("gray.800", "gray.200"),
-                      color: useColorModeValue("gray.100", "gray.700"),
-                    }}
-                    isRound
-                    boxSize={{ base: "6.5rem", lg: "6rem" }}
-                    opacity="1"
-                  />
-                </Box>
-              </HStack>
-            </Flex>
-
-            <Box
-              className="bioContainer"
-              width="100%"
-              height="100%"
-              display="flex"
-              justifyContent="center"
-              alignItems="left"
-              paddingY={{ base: "2rem", lg: "5rem" }}
-            >
-              <Box
-                display="flex"
-                maxWidth={{ base: "85%", lg: "60%" }}
-              >
-                <Text
-                  className="speaker_title"
-                  fontSize={{ base: "1.6rem", lg: "2rem" }}
-                  lineHeight={{ base: "25px", lg: "32px" }}
-                  color={useColorModeValue("gray.800", "white")}
-
-                  letterSpacing={{ base: "initial", lg: "1.5px" }}
-                // fontFamily="'Literata', serif"
+                <Box
+                    position="relative"
+                    bg={cardBg}
+                    borderRadius="10px"
+                    boxShadow="2xl"
+                    padding={{ base: 6, md: 10 }}
+                    maxW="900px"
+                    width="100%"
+                    marginTop={{ base: 16, md: 0 }}
+                    textAlign="center"
                 >
-                  <Box as="span" display="inline-block">
-                    <BsChatRightQuoteFill size={quoteIconSize} color="#fc5a03" />
-                  </Box>
-                  {" "}
-                  {quoteText}
-                </Text>
-              </Box>
-            </Box>
-            {/* </motion.div> */}
-          </Box>
-        </Box>
-      </Box>
+                    {/* Profile Image */}
+                    <Image
+                        src={image}
+                        alt={name}
+                        boxSize={{ base: "250px", lg: "300px" }}
+                        objectFit="cover"
+                        borderRadius="full"
+                        marginX="auto"
+                        marginBottom="2rem"
+                        border="4px solid"
+                        borderColor={useColorModeValue("white", "gray.900")}
+                    />
 
-      {/* Right Section */}
-      <Box
-        className="right-section"
-        display="flex"
-        flex={{ base: "1", lg: "1" }}
-        justifyContent="center"
-        alignItems="center"
-        zIndex={2}
-      >
-        {imageSrc && (
-          <Box
-            className="image_container"
-            height={{ base: "100%", lg: "100%" }}
-            width={{ base: "initial", lg: "initial" }}
-          >
-            <Image
-              className="profile_image"
-              src={imageSrc}
-              height={{ base: "100%", lg: "100%" }}
-              // width={{ base: "initial", lg: "initial" }}
-              objectFit="cover"
-            />
-          </Box>
-        )}
-      </Box>
-    </Flex>
-  );
+                    {/* Name & Title */}
+                    <VStack
+                        position={"relative"}
+                        alignItems="center"
+                        width={"100%"}
+                        justifyContent={"center"}
+                        paddingX="1.5rem"
+                        marginBottom="0.5rem"
+                    >
+                        <Text
+                            fontSize={{ base: "2.8rem", md: "3rem" }}
+                            fontWeight="1000"
+                            fontFamily="Big Shoulders Display"
+                            letterSpacing="0.5px"
+                            marginBottom="1rem"
+                            bgGradient={headingGradient}
+                            bgClip="text"
+                        >
+                            {name}
+                        </Text>
+                        <Text
+
+                            fontSize={{ base: "1.7rem", md: "1.8rem" }}
+                            fontWeight="semibold"
+                            color={textColor}
+                            mb={6}
+                        >
+                            {title}
+                        </Text>
+                    </VStack>
+
+                    <HStack
+                        spacing={{ base: "6", lg: "6" }}
+                        justifyContent={"center"}
+                        marginBottom="2rem"
+                    >
+                        <Box as="a" href={linkedinAddress} target="_blank" rel="noopener noreferrer">
+                            <IconButton
+                                aria-label="linkedin"
+                                variant="ghost"
+                                size="xl"
+                                icon={<BsLinkedin size={iconSize} />}
+                                color={useColorModeValue("gray.800", "gray.200")}
+                                _hover={{
+                                    bg: useColorModeValue("gray.800", "gray.200"),
+                                    color: useColorModeValue("gray.100", "gray.700"),
+                                }}
+                                isRound
+                                boxSize={iconBoxSize}
+                            />
+                        </Box>
+                        <Box as="a" href={emailAddress} target="_blank" rel="noopener noreferrer">
+                            <IconButton
+                                aria-label="email"
+                                variant="ghost"
+                                size="xl"
+                                icon={<TfiEmail size={iconSize} />}
+                                color={useColorModeValue("gray.800", "gray.200")}
+                                _hover={{
+                                    bg: useColorModeValue("gray.800", "gray.200"),
+                                    color: useColorModeValue("gray.100", "gray.700"),
+                                }}
+                                isRound
+                                boxSize={iconBoxSize}
+                            />
+                        </Box>
+                        <Box as="a" href={twitterAddress} target="_blank" rel="noopener noreferrer">
+                            <IconButton
+                                aria-label="twitter"
+                                variant="ghost"
+                                size="xl"
+                                icon={<FaXTwitter size={iconSize} />}
+                                color={useColorModeValue("#gray.800", "gray.200")}
+                                _hover={{
+                                    bg: useColorModeValue("gray.800", "gray.200"),
+                                    color: useColorModeValue("gray.100", "gray.700"),
+                                }}
+                                isRound
+                                boxSize={iconBoxSize}
+                            />
+                        </Box>
+                    </HStack>
+
+                    <Box
+                        maxH="500px"
+                        overflowY="auto"
+                        sx={customScrollBar}
+                        color={textColor}
+                        textAlign="left"
+                        marginX="auto"
+                    >
+                        <Text
+                            fontSize={{ base: "1.5rem", lg: "1.8rem" }}
+                        >
+                            {biography}
+                        </Text>
+                    </Box>
+                </Box>
+            </Flex>
+        </Box>
+    );
 };
 
-// export default BlockTeamProfiles2;
+export default BlockTeamProfiles;

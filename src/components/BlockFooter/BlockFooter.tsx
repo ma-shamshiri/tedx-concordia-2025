@@ -106,7 +106,7 @@ export const BlockFooter: React.FC = () => {
           marginY="4rem"
           gap={3}
         >
-          <Image src={tedxImg} width="60%" height="fit-content" />
+          <Image src={tedxImg} width={{ base: "80%", lg: "60%" }} height="fit-content" />
           <Box fontSize="1.5rem" color={useColorModeValue("gray.300", "gray")}>
             © 2025 TEDxConcordiaUniversity
           </Box>

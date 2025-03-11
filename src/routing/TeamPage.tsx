@@ -5,6 +5,7 @@ import { Navigationbar } from "../components/Navigationbar";
 import { useTranslation } from "react-i18next";
 import { ComingSoonTeamPage } from "../components/ComingSoonTeamPage";
 import MyNavbar from "../components/MyNavbar";
+import BlockTeamMembers from "../components/BlockTeamMembers";
 
 const TeamPage: React.FC = () => {
   const { t } = useTranslation();
@@ -28,7 +29,7 @@ const TeamPage: React.FC = () => {
         onAnimationComplete={handleBoxLoad}
       >
         <MyNavbar />
-        <ComingSoonTeamPage />
+        <BlockTeamMembers />
         <BlockFooter />
       </motion.div>
     </>

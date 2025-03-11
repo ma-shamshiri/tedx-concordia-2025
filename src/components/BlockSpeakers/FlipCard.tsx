@@ -1,18 +1,29 @@
 import React, { useState } from "react";
-import { Box, Button, Image, Text, Link } from "@chakra-ui/react";
-import { GiResize } from "react-icons/gi";
+import { Box, Button, Image, Text, Link, useColorModeValue, Flex, IconButton, HStack, useBreakpointValue, VStack } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
+import { FaXTwitter } from "react-icons/fa6";
+import { TfiEmail } from "react-icons/tfi";
+import { BsLinkedin } from "react-icons/bs";
+import { motion } from 'framer-motion';
+import { Speaker } from "./data";
 
-interface FlipCardProps {
-  frontImageHref: string;
-  backImageHref: string;
-}
+interface FlipCardProps extends Partial<Speaker> { }
 
 const FlipCard: React.FC<FlipCardProps> = ({
-  frontImageHref,
-  backImageHref,
+  id,
+  name,
+  title,
+  image,
+  profileHref,
+  linkedinAddress,
+  emailAddress,
+  twitterAddress,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const iconSize = useBreakpointValue({ base: "2.5rem", lg: "2.5rem" });
+  const iconBoxSize = useBreakpointValue({ base: "5rem", lg: "5rem" });
 
   const handleCardClick = () => {
     setIsFlipped(!isFlipped);
@@ -23,86 +34,201 @@ const FlipCard: React.FC<FlipCardProps> = ({
   };
   return (
     <Box
-      className={`scene scene--card`}
-      width="100%"
-      height="40rem"
-      style={{
-        perspective: "600px",
-      }}
-      onMouseEnter={handleCardHover}
-      onMouseLeave={handleCardHover}
+      position="relative"
+
+      // borderWidth="1px"
+      // borderColor={useColorModeValue("#000", "#fff")}
+      borderRadius="10px"
+      onMouseEnter={() => id !== undefined && setHoveredIndex(id)}
+      onMouseLeave={() => setHoveredIndex(null)}
     >
       <Box
-        className="card"
         position="relative"
         width="100%"
-        height="100%"
-        transition="transform 1.3s"
-        cursor="pointer"
-        transform={isFlipped ? "rotateY(180deg)" : "rotateY(0)"}
+        height="390px"
         style={{
-          transformStyle: "preserve-3d",
+          perspective: "600px",
         }}
+        onMouseEnter={handleCardHover}
+        onMouseLeave={handleCardHover}
       >
         <Box
-          className="card__face card__face--front"
-          position="absolute"
+          position="relative"
           width="100%"
           height="100%"
-          color="white"
-          textAlign="center"
-          fontWeight="bold"
-          fontSize="3rem"
+          transition="transform 1.3s"
+          transform={isFlipped ? "rotateY(180deg)" : "rotateY(0)"}
           style={{
-            WebkitBackfaceVisibility: "hidden",
-            backfaceVisibility: "hidden",
+            transformStyle: "preserve-3d",
           }}
         >
-          <Image
-            src={frontImageHref}
+          <Box
+            className="card__face card__face--front"
+            position="absolute"
             width="100%"
             height="100%"
-            objectFit="cover"
-            borderRadius={"8px"}
-          />
-        </Box>
-        <Box
-          className="card__face card__face--back"
-          position="absolute"
-          bg=" #CB0000"
-          width="100%"
-          height="100%"
-          color="#fff"
-          textAlign="center"
-          fontWeight="bold"
-          fontSize="3rem"
-          transform="rotateY(180deg)"
-          style={{
-            WebkitBackfaceVisibility: "hidden",
-            backfaceVisibility: "hidden",
-          }}
-        >
-          <Text
-            as="h3"
-            fontSize="lg"
-            mb={2}
             textAlign="center"
-            // bgGradient={headingGradient}
-            bgClip="text"
+            bg="radial-gradient(circle, 
+              rgba(255, 223, 120, 1) 0%,   /* Bright Golden Yellow */
+              rgba(233, 203, 90, 1) 30%,   /* Warm Rich Gold (#e9cb5a - extracted) */
+              rgba(218, 165, 32, 1) 65%,   /* Classic Goldenrod */
+              rgba(139, 101, 8, 1) 100%    /* Deep Metallic Gold */
+              );"
+            borderRadius="10px"
+            style={{
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
+            }}
+            boxShadow={useColorModeValue("0 0 30px 1px gray", "0 0 30px 1px black")}
           >
-            name
-          </Text>
-          <Text fontSize="sm" mb={4} textAlign="center">
-            title
-          </Text>
-          <Link
-            as={RouterLink}
-            to="/"
-            cursor="pointer"
-            colorScheme="teal"
+            <Image
+              src={image}
+              width="100%"
+              height="100%"
+              objectFit="cover"
+              borderRadius="10px"
+            />
+            <Text
+              fontSize="2.8rem"
+              fontWeight="bold"
+              fontFamily="Big Shoulders Display"
+              letterSpacing="0.5px"
+              paddingTop="2rem"
+            >
+              {name}
+            </Text>
+          </Box>
+          <Box
+            className="card__face card__face--back"
+            position="absolute"
+            width="100%"
+            height="100%"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="space-around"
+            textAlign="center"
+            bg="radial-gradient(circle, 
+              rgba(255, 40, 40, 1) 0%,
+              rgba(200, 0, 0, 1) 40%,
+              rgba(150, 0, 0, 1) 80%,
+              rgba(110, 0, 0, 1) 100% 
+            );"
+            color="#fff"
+            transform="rotateY(180deg)"
+            borderRadius="10px"
+            style={{
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
+            }}
           >
-            View Profile
-          </Link>
+            <VStack>
+              <Text
+                fontSize="2.8rem"
+                fontWeight="1000"
+                // fontFamily="'Acme', sans-serif"
+
+                // fontWeight="bold"
+                fontFamily="Big Shoulders Display"
+                letterSpacing="0.5px"
+
+                // letterSpacing="1px"
+                marginBottom={2}
+              >
+                {name}
+              </Text>
+              <Text
+                fontSize="1.7rem"
+                fontWeight="400"
+                marginBottom={2}
+                paddingX="2.5rem"
+              >
+                {title}
+              </Text>
+            </VStack>
+
+            {/* View Profile button */}
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 10 }}
+              whileTap={{ scale: 1, rotate: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 5,
+              }}
+            >
+              <Link
+                as={RouterLink}
+                to={profileHref}
+                cursor="pointer"
+                fontSize="1.8rem"
+                fontWeight="bold"
+                borderWidth="2px"
+                borderColor="#fff"
+                borderRadius="7px"
+                padding="1.5rem"
+                textDecoration="none"
+                _hover={{
+                  textDecoration: "none",
+                  bg: "#fff",
+                  color: "#CB0000"
+                }}
+              >
+                View Profile
+              </Link>
+            </motion.div>
+
+            <HStack
+              spacing={{ base: "6", lg: "6" }}
+              justifyContent={"center"}
+            >
+              <Box as="a" href={linkedinAddress} target="_blank" rel="noopener noreferrer">
+                <IconButton
+                  aria-label="linkedin"
+                  variant="ghost"
+                  size="xl"
+                  icon={<BsLinkedin size={iconSize} />}
+                  color={useColorModeValue("gray.200", "gray.200")}
+                  _hover={{
+                    bg: useColorModeValue("gray.200", "gray.200"),
+                    color: useColorModeValue("gray.700", "gray.700"),
+                  }}
+                  isRound
+                  boxSize={iconBoxSize}
+                />
+              </Box>
+              <Box as="a" href={emailAddress} target="_blank" rel="noopener noreferrer">
+                <IconButton
+                  aria-label="email"
+                  variant="ghost"
+                  size="xl"
+                  icon={<TfiEmail size={iconSize} />}
+                  color={useColorModeValue("gray.200", "gray.200")}
+                  _hover={{
+                    bg: useColorModeValue("gray.200", "gray.200"),
+                    color: useColorModeValue("gray.700", "gray.700"),
+                  }}
+                  isRound
+                  boxSize={iconBoxSize}
+                />
+              </Box>
+              <Box as="a" href={twitterAddress} target="_blank" rel="noopener noreferrer">
+                <IconButton
+                  aria-label="twitter"
+                  variant="ghost"
+                  size="xl"
+                  icon={<FaXTwitter size={iconSize} />}
+                  color={useColorModeValue("gray.200", "gray.200")}
+                  _hover={{
+                    bg: useColorModeValue("gray.200", "gray.200"),
+                    color: useColorModeValue("gray.700", "gray.700"),
+                  }}
+                  isRound
+                  boxSize={iconBoxSize}
+                />
+              </Box>
+            </HStack>
+          </Box>
         </Box>
       </Box>
     </Box>

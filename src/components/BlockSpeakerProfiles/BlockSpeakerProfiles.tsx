@@ -1,211 +1,249 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Box,
-  Flex,
-  Image,
-  Link,
-  Text,
-  VStack,
-  useColorModeValue,
+    Box,
+    Flex,
+    Text,
+    Image,
+    useColorModeValue,
+    SystemStyleObject,
+    VStack,
+    HStack,
+    IconButton,
+    useBreakpointValue,
 } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import ReactPlayer from "react-player";
-import SpeakerProfileCard from "./SpeakerProfileCard";
-import { sliderDataProps } from './sliderData';
-import SpeakerSlider from "./SpeakerSlider";
-import { videoThumbnail } from "../../assets";
+import { BsLinkedin } from "react-icons/bs";
+import { TfiEmail } from "react-icons/tfi";
+import { FaXTwitter } from "react-icons/fa6";
 
 interface BlockSpeakerProfilesProps {
-  name?: string;
-  title?: string;
-  biography?: string;
-  talkTopic?: string;
-  imageSrc?: string;
-  videoSrc?: string;
-  videoDescription?: string;
-  slides: sliderDataProps[];
+    name: string;
+    title: string;
+    biography: string;
+    image: string;
+    linkedinAddress: string;
+    emailAddress: string;
+    twitterAddress: string;
 }
 
-export const BlockSpeakerProfiles: React.FC<BlockSpeakerProfilesProps> = ({
-  name,
-  title,
-  biography,
-  talkTopic,
-  imageSrc,
-  videoSrc = "",
-  videoDescription = "",
-  slides
+const BlockSpeakerProfiles: React.FC<BlockSpeakerProfilesProps> = ({
+    name,
+    title,
+    biography,
+    image,
+    linkedinAddress,
+    emailAddress,
+    twitterAddress
 }) => {
-  const { t } = useTranslation();
 
-  const [isHoveredButton, setIsHoveredButton] = useState(false);
+    const iconSize = useBreakpointValue({ base: "2.5rem", lg: "2.5rem" });
+    const iconBoxSize = useBreakpointValue({ base: "5rem", lg: "5rem" });
 
-  const handleHoverButton = () => {
-    setIsHoveredButton(true);
-  };
+    const waveFill = useColorModeValue("#f0f4f8", "#2D3748");
+    const radialGradient = useColorModeValue(
+        "radial-gradient(circle at top, teal.50, teal.100, teal.200)",
+        "radial-gradient(circle at top, gray.700, gray.800, gray.900)"
+    );
+    const cardBg = useColorModeValue("whiteAlpha.900", "blackAlpha.700");
+    const textColor = useColorModeValue("gray.800", "gray.200");
+    const headingGradient = useColorModeValue(
+        "linear(to-r, teal.400, blue.400)",
+        "linear(to-r, teal.200, blue.300)"
+    );
 
-  const handleUnHoverButton = () => {
-    setIsHoveredButton(false);
-  };
+    const customScrollBar: SystemStyleObject = {
+        "&::-webkit-scrollbar": {
+            width: "6px",
+        },
+        "&::-webkit-scrollbar-track": {
+            background: "transparent",
+        },
+        "&::-webkit-scrollbar-thumb": {
+            background: useColorModeValue("#CBD5E0", "#4A5568"),
+            borderRadius: "3px",
+        },
+    };
 
-  return (
-    <Box
-      position="relative"
-      // width="100vw"
-      overflow="hidden"
-    >
-      <SpeakerSlider slides={slides} />
-
-      <SpeakerProfileCard
-        name={name}
-        title={title}
-        imageSrc={imageSrc}
-        biography={biography}
-      />
-
-      <Flex
-        className="video_section_container"
-        position="relative"
-        width="100%"
-        height="fit-content"
-        bg={useColorModeValue("black", "black")}
-        justifyContent="center"
-        alignItems="center"
-        paddingY={{ base: "4rem", lg: "6rem" }}
-        flexDirection="column"
-        overflow="hidden"
-      >
+    return (
         <Box
-          className="video_embed_container"
-          position="relative"
-          width={{ base: "90vw", lg: "55vw" }}
-          height={{ base: "50.5vw", lg: "31vw" }}
+            position="relative"
+            width="100%"
+            minH="100vh"
+            bg={radialGradient}
+            overflow="hidden"
         >
-          {videoSrc !== "" ? (
-            <ReactPlayer
-              className="react-player"
-              url={videoSrc}
-              controls={true}
-              width="100%"
-              height="100%"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0
-              }}
-              allowFullScreen
-            />
-          ) : (
-            <>
-              <Image
-                className="video_thumbnail"
-                src={videoThumbnail}
-                alt="Video Thumbnail Image"
-                objectFit="cover"
-                opacity="0.5"
-                borderRadius="20px"
-
-              />
-              <Box
-                className="title_container"
+            {/* --- Top Wave --- */}
+            <Box
+                as="svg"
+                viewBox="0 0 1440 320"
                 position="absolute"
                 top={0}
                 left={0}
-                width="100%"
-                height="100%"
-                bg="white"
-                opacity="0.55"
-                justifyContent="center"
-                alignItems="center"
-                display={videoSrc === "" ? "flex" : "none"}
-                borderRadius="20px"
-              // zIndex={2}
-              >
-                <VStack>
-                  <Text
-                    className="title"
-                    fontSize={{ base: "3rem", lg: "5rem" }}
-                    fontWeight="bold"
-                    color={useColorModeValue("black", "black")}
-                  >
-                    {t("videoThumbnailTitle")}
-                  </Text>
-                  <Text
-                    className="title"
-                    fontSize={{ base: "1.8rem", lg: "3rem" }}
-                    fontWeight="bold"
-                    color={useColorModeValue("black", "black")}
-                  >
-                    {t("videoThumbnailSubTitle")}
-                  </Text>
-                </VStack>
-              </Box>
-            </>
-          )}
-        </Box>
-        {videoDescription &&
-          <Box
-            className="video_description"
-            position="relative"
-            display="flex"
-            width="100%"
-            maxWidth={{ base: "90vw", lg: "55vw" }}
-            paddingTop="4rem"
-          >
-            <Text
-              className="speaker_title"
-              fontSize={{ base: "1.5rem", lg: "1.8rem" }}
-              lineHeight={{ base: "", lg: "32px" }}
-              color={useColorModeValue("gray.200", "gray.200")}
+                w="100%"
+                h="auto"
+                zIndex={1}
             >
-              {videoDescription}
-            </Text>
-          </Box>
-        }
+                <path
+                    fill={waveFill}
+                    fillOpacity="1"
+                    d="M0,96L48,128C96,160,192,224,288,224C384,224,480,160,576,149.3C672,139,768,181,864,202.7C960,224,1056,224,1152,192C1248,160,1344,96,1392,64L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+                />
+            </Box>
 
-        <Flex
-          bg={useColorModeValue("black", "black")}
-          justifyContent="center"
-          alignItems="center"
-          paddingTop="6rem"
-          display={{ base: "none", lg: "block" }}
-        >
-          <Link
-            position="relative"
-            className="btn btn--secondary btn--block"
-            as={RouterLink}
-            to={"/tedx-2023/videos/"}
-            // href="/videos/"
-            border="2px solid #F04E2D"
-            borderRadius="7px"
-            cursor="pointer"
-            fontSize={{ base: "1.8rem", lg: "2rem" }}
-            padding="1.5rem"
-            textAlign="center"
-            whiteSpace="nowrap"
-            bg="#f04e2d"
-            color="#fff"
-            boxShadow="0px 6px 10px rgba(0, 0, 0, 0.2), 0px -6px 10px rgba(0, 0, 0, 0.2)"
-            display="inline-block"
-            width={{ base: "fit-content", lg: "fit-content" }}
-            _hover={{
-              border: "0.2rem solid #f75540",
-              bg: "transparent",
-              color: "#f04e2d",
-              boxShadow:
-                "0px 8px 14px rgba(0, 0, 0, 0.3), 0px -8px 14px rgba(0, 0, 0, 0.3)",
-            }}
-            transition="background-color 0.25s ease-out, border 0.25s ease-out, box-shadow 0.25s ease"
-            onMouseEnter={handleHoverButton}
-            onMouseLeave={handleUnHoverButton}
-          >
-            <Text>{t("exploreAllTalks")}</Text>
-          </Link>
-        </Flex>
-      </Flex>
-    </Box>
-  );
+            {/* --- Bottom Wave --- */}
+            <Box
+                as="svg"
+                viewBox="0 0 1440 320"
+                position="absolute"
+                bottom={0}
+                left={0}
+                w="100%"
+                h="auto"
+                zIndex={1}
+            >
+                <path
+                    fill={waveFill}
+                    fillOpacity="1"
+                    d="M0,256L80,229.3C160,203,320,149,480,149.3C640,149,800,203,960,197.3C1120,192,1280,128,1360,96L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+                />
+            </Box>
+
+            {/* Main Content Container */}
+            <Flex
+                direction="column"
+                align="center"
+                justify="center"
+                position="relative"
+                zIndex={5}
+                width="100%"
+                minH="100vh"
+                paddingX="2rem"
+                paddingY={{ base: "5rem", lg: "5rem" }}
+            >
+                <Box
+                    position="relative"
+                    bg={cardBg}
+                    borderRadius="10px"
+                    boxShadow="2xl"
+                    padding={{ base: 6, md: 10 }}
+                    maxW="900px"
+                    width="100%"
+                    marginTop={{ base: 16, md: 0 }}
+                    textAlign="center"
+                >
+                    {/* Profile Image */}
+                    <Image
+                        src={image}
+                        alt={name}
+                        boxSize={{ base: "250px", lg: "300px" }}
+                        objectFit="cover"
+                        borderRadius="full"
+                        marginX="auto"
+                        marginBottom="2rem"
+                        border="4px solid"
+                        borderColor={useColorModeValue("white", "gray.900")}
+                    />
+
+                    {/* Name & Title */}
+                    <VStack
+                        position={"relative"}
+                        alignItems="center"
+                        width={"100%"}
+                        justifyContent={"center"}
+                        paddingX="1.5rem"
+                        marginBottom="0.5rem"
+                    >
+                        <Text
+                            fontSize={{ base: "2.8rem", md: "3rem" }}
+                            fontWeight="1000"
+                            fontFamily="Big Shoulders Display"
+                            letterSpacing="0.5px"
+                            marginBottom="1rem"
+                            bgGradient={headingGradient}
+                            bgClip="text"
+                        >
+                            {name}
+                        </Text>
+                        <Text
+
+                            fontSize={{ base: "1.7rem", md: "1.8rem" }}
+                            fontWeight="semibold"
+                            color={textColor}
+                            mb={6}
+                        >
+                            {title}
+                        </Text>
+                    </VStack>
+
+                    <HStack
+                        spacing={{ base: "6", lg: "6" }}
+                        justifyContent={"center"}
+                        marginBottom="2rem"
+                    >
+                        <Box as="a" href={linkedinAddress} target="_blank" rel="noopener noreferrer">
+                            <IconButton
+                                aria-label="linkedin"
+                                variant="ghost"
+                                size="xl"
+                                icon={<BsLinkedin size={iconSize} />}
+                                color={useColorModeValue("gray.800", "gray.200")}
+                                _hover={{
+                                    bg: useColorModeValue("gray.800", "gray.200"),
+                                    color: useColorModeValue("gray.100", "gray.700"),
+                                }}
+                                isRound
+                                boxSize={iconBoxSize}
+                            />
+                        </Box>
+                        <Box as="a" href={emailAddress} target="_blank" rel="noopener noreferrer">
+                            <IconButton
+                                aria-label="email"
+                                variant="ghost"
+                                size="xl"
+                                icon={<TfiEmail size={iconSize} />}
+                                color={useColorModeValue("gray.800", "gray.200")}
+                                _hover={{
+                                    bg: useColorModeValue("gray.800", "gray.200"),
+                                    color: useColorModeValue("gray.100", "gray.700"),
+                                }}
+                                isRound
+                                boxSize={iconBoxSize}
+                            />
+                        </Box>
+                        <Box as="a" href={twitterAddress} target="_blank" rel="noopener noreferrer">
+                            <IconButton
+                                aria-label="twitter"
+                                variant="ghost"
+                                size="xl"
+                                icon={<FaXTwitter size={iconSize} />}
+                                color={useColorModeValue("#gray.800", "gray.200")}
+                                _hover={{
+                                    bg: useColorModeValue("gray.800", "gray.200"),
+                                    color: useColorModeValue("gray.100", "gray.700"),
+                                }}
+                                isRound
+                                boxSize={iconBoxSize}
+                            />
+                        </Box>
+                    </HStack>
+
+                    <Box
+                        maxH="500px"
+                        overflowY="auto"
+                        sx={customScrollBar}
+                        color={textColor}
+                        textAlign="left"
+                        marginX="auto"
+                    >
+                        <Text
+                            fontSize={{ base: "1.5rem", lg: "1.8rem" }}
+                        >
+                            {biography}
+                        </Text>
+                    </Box>
+                </Box>
+            </Flex>
+        </Box>
+    );
 };
 
-// export default BlockSpeakerProfiles;
+export default BlockSpeakerProfiles;
