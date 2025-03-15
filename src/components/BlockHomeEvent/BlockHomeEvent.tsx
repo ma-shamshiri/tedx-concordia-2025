@@ -23,14 +23,14 @@ const BlockHomeEvent: React.FC = () => {
 
     const tickets = [
         {
-            title: "Early Bird",
-            price: "$4.99",
-            description: "Available until Mar 10",
+            title: "Student Pass",
+            price: "$7.99",
+            description: "Only for Students",
             link: "https://www.zeffy.com/en-CA/ticketing/tedx-concordia-university",
         },
         {
             title: "General Admission",
-            price: "$7.99",
+            price: "$14.99",
             description:
                 "Full access to all talks",
             link: "https://www.zeffy.com/en-CA/ticketing/tedx-concordia-university",

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BlockFooter } from "../components/BlockFooter";
 import { motion } from "framer-motion";
-import { Navigationbar } from "../components/Navigationbar";
 import { useTranslation } from "react-i18next";
-import { ComingSoonTeamPage } from "../components/ComingSoonTeamPage";
 import MyNavbar from "../components/MyNavbar";
 import BlockTeamMembers from "../components/BlockTeamMembers";
 

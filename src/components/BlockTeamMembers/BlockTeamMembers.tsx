@@ -87,7 +87,7 @@ const BlockTeamMembers: React.FC = () => {
 
                 {/* Staggered Grid Layout */}
                 <SimpleGrid
-                    columns={{ base: 1, md: 3, lg: 3 }}
+                    columns={{ base: 1, md: 2, lg: 3 }}
                     spacingX="5rem"
                     spacingY={{ base: "12rem", lg: "10rem" }}
                     maxW="1200px"

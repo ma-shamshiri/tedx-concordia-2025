@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import MyNavbar from "../components/MyNavbar";
 import BlockSpeakers from "../components/BlockSpeakers";
-import { amin } from "../assets";
-import BlockSpeakerProfiles from "../components/BlockSpeakerProfiles";
 
 const SpeakersPage: React.FC = () => {
   const { t } = useTranslation();

@@ -3,10 +3,6 @@ import { AnimatePresence } from 'framer-motion';
 import { useLocation, Routes, Route } from 'react-router-dom';
 import EventPage from "./EventPage";
 import HomePage from "./HomePage";
-import JoinUsPage from "./JoinUsPage";
-import JoinUsSpeakerPage from "./JoinUsSpeakerPage";
-import JoinUsSponsorPage from "./JoinUsSponsorPage";
-import JoinUsTeamPage from "./JoinUsTeamPage";
 import MediaPage from "./MediaPage";
 import SpeakersPage from "./SpeakersPage";
 import TeamPage from "./TeamPage";
@@ -33,10 +29,10 @@ const AnimatedRoutes: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/photos/" element={<MediaPage />} />
         <Route path="/event/" element={<EventPage />} />
-        
+
         <Route path="/team/" element={<TeamPage />} />
         <Route path="/team/amin-shamshiri" element={<AminShamshiri />} />
-        <Route path="/team/aditya-thakkar" element={<AdityaThakkar />} />
+        {/* <Route path="/team/aditya-thakkar" element={<AdityaThakkar />} /> */}
         <Route path="/team/divyanshu-jaggi" element={<DivyanshuJaggi />} />
         <Route path="/team/mahimur-rahman-khan" element={<MahimurRahmanKhan />} />
         <Route path="/team/moksh-sood" element={<MokshSood />} />
