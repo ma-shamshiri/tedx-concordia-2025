@@ -42,6 +42,7 @@ const BlockSpeakers: React.FC = () => {
             position="relative"
             minH="100vh"
             bg={useColorModeValue("gray.50", "gray.900")}
+            padding="4rem 1rem 6rem 1rem"
             overflow="hidden"
         >
             {/* Wave background at the bottom */}
@@ -61,6 +62,7 @@ const BlockSpeakers: React.FC = () => {
                     className="block__header"
                     textAlign="center"
                     margin="0 auto"
+                    marginBottom={{ base: "4rem", lg: "6rem" }}
                 >
                     <Text
                         color={useColorModeValue('gray.800', '#16F8B6')}
@@ -76,7 +78,6 @@ const BlockSpeakers: React.FC = () => {
                     </Text>
                     <Text
                         color={useColorModeValue('gray.700', 'white')}
-                        marginBottom="4rem"
                         marginTop="0"
                         fontSize={{ base: '1.5rem', lg: '2.3rem' }}
                         lineHeight="1.5"
