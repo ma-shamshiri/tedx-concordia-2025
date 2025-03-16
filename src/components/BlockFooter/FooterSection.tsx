@@ -11,6 +11,7 @@ import {
     HStack,
 } from "@chakra-ui/react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
 interface FooterSectionProps {
     title: string;
@@ -27,6 +28,8 @@ const FooterSection: React.FC<FooterSectionProps> = ({
     isExpanded = false,
     toggleExpand,
 }) => {
+    const { t, i18n } = useTranslation();
+
     const linkColor = useColorModeValue("gray.300", "#777");
     const hoverColor = useColorModeValue("#fff", "#fff");
     const chevronColor = useColorModeValue("#debdc4", "#393939");
@@ -47,7 +50,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({
                     textTransform="uppercase"
                     paddingBottom="0.4rem"
                 >
-                    {title}
+                    {t(title)}
                 </Text>
                 {isCollapsible && (
                     <Icon
@@ -86,7 +89,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({
                                     color={linkColor}
                                     _hover={{ color: hoverColor }}
                                 >
-                                    {link.label}
+                                    {t(link.label)}
                                 </Link>
                             </ListItem>
                         ))}

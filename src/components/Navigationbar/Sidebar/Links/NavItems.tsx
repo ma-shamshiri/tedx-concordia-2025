@@ -22,7 +22,7 @@ interface NavItem {
     //     },
     //     {
     //       label: "tedxconcordiauniversity",
-    //       subLabel: "tedxavelorneSubLabel",
+    //       subLabel: "tedxconcordiauniversitySubLabel",
     //       href: "/",
     //     },
     //   ],

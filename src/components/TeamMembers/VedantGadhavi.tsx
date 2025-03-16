@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BlockFooter } from "../BlockFooter";
-import { param_patel, vedant_gadhvi } from "../../assets";
+import { vedant_gadhvi } from "../../assets";
 import { motion } from "framer-motion";
 import MyNavbar from "../MyNavbar";
 import BlockTeamProfiles from "../BlockTeamProfiles";
@@ -32,7 +32,7 @@ const VedantGadhavi: React.FC = () => {
                     image={vedant_gadhvi}
                     linkedinAddress="http://linkedin.com/in/vedant-gadhavi"
                     emailAddress=""
-                    twitterAddress=""
+                    twitterAddress="https://x.com/"
                 />
                 <BlockFooter />
             </motion.div>

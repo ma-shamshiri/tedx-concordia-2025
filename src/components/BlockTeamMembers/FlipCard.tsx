@@ -1,11 +1,22 @@
 import React, { useState } from "react";
-import { Box, Button, Image, Text, Link, useColorModeValue, Flex, IconButton, HStack, useBreakpointValue, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Image,
+  Text,
+  Link,
+  useColorModeValue,
+  IconButton,
+  HStack,
+  useBreakpointValue,
+  VStack
+} from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { FaXTwitter } from "react-icons/fa6";
 import { TfiEmail } from "react-icons/tfi";
 import { BsLinkedin } from "react-icons/bs";
 import { motion } from 'framer-motion';
 import { TeamMember } from "./data";
+import { useTranslation } from "react-i18next";
 
 interface FlipCardProps extends Partial<TeamMember> { }
 
@@ -19,6 +30,8 @@ const FlipCard: React.FC<FlipCardProps> = ({
   emailAddress,
   twitterAddress,
 }) => {
+  const { t } = useTranslation();
+
   const [isFlipped, setIsFlipped] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -175,7 +188,7 @@ const FlipCard: React.FC<FlipCardProps> = ({
                   color: "#CB0000"
                 }}
               >
-                View Profile
+                {t("viewProfile")}
               </Link>
             </motion.div>
 

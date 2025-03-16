@@ -32,7 +32,7 @@ const DivyanshuJaggi: React.FC = () => {
                     image={divyanshu_jaggi}
                     linkedinAddress="https://linkedin.com/in/divyanshu-jaggi"
                     emailAddress=""
-                    twitterAddress=""
+                    twitterAddress="https://x.com/"
                 />
                 <BlockFooter />
             </motion.div>

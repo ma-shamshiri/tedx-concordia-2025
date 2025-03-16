@@ -4,8 +4,11 @@ import { doneyli_de_jesus } from "../../assets";
 import { motion } from "framer-motion";
 import BlockSpeakerProfiles from "../BlockSpeakerProfiles";
 import MyNavbar from "../MyNavbar";
+import { useTranslation } from "react-i18next";
 
 const DoneyliDeJesus: React.FC = () => {
+    const { t } = useTranslation();
+
     const [boxLoaded, setBoxLoaded] = useState(false);
 
     const handleBoxLoad = () => {
@@ -27,22 +30,12 @@ const DoneyliDeJesus: React.FC = () => {
                 <MyNavbar />
                 <BlockSpeakerProfiles
                     name="Doneyli De Jesus"
-                    title="Principal AI Architect"
-                    biography={`Doneyli is a Principal AI Architect at Snowflake, where he leads strategic initiatives in 
-                        Generative AI and Machine Learning, helping organizations unlock the transformative power of AI. 
-                        With over two decades of experience in AI & Data, he has been at the forefront of guiding enterprises 
-                        through the ever-changing technological landscape. His expertise bridges the gap between cutting-edge 
-                        technology and real-world impact, enabling businesses to turn data into actionable intelligence. 
-                        Beyond his role at Snowflake, Doneyli is a thought leader and mentor dedicated to shaping the next 
-                        generation of AI and data professionals. His passion for education and strategic thinking extends beyond 
-                        boardrooms—he actively shares insights through public speaking, coaching, and industry mentorship. 
-                        He believes that the future of AI is not just about technology but about empowering people to think 
-                        differently and innovate fearlessly. He brings a unique perspective on the intersection of AI, business, 
-                        and human potential—challenging audiences to rethink what’s possible in an AI-driven world.`}
+                    title={t("doneyliDeJesusTitle")}
+                    biography={t(`doneyliDeJesusBio`)}
                     image={doneyli_de_jesus}
                     linkedinAddress="https://www.linkedin.com/in/doneyli/"
                     emailAddress=""
-                    twitterAddress=""
+                    twitterAddress="https://x.com/"
                 />
                 <BlockFooter />
             </motion.div>

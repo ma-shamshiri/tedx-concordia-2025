@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Flex, IconButton, Text, useColorModeValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useTranslation } from "react-i18next";
 
 interface MenuToggleProps {
   isOpen: boolean;
@@ -9,6 +10,8 @@ interface MenuToggleProps {
 }
 
 const MenuToggle: React.FC<MenuToggleProps> = ({ isOpen, onClick }) => {
+  const { t, i18n } = useTranslation();
+
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
@@ -61,7 +64,7 @@ const MenuToggle: React.FC<MenuToggleProps> = ({ isOpen, onClick }) => {
           opacity={isOpen ? 0 : 1}
           transition="opacity 0.5s"
         >
-          Menu
+          {t("menu")}
         </Text>
       </Box>
 

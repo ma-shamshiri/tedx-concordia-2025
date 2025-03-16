@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Box, Flex, Text, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
-    eventStartTime,
-}) => {
+const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({ eventStartTime }) => {
     const calculateTimeLeft = () => {
         const currentTime = new Date();
         const difference = eventStartTime.getTime() - currentTime.getTime();
@@ -15,17 +13,14 @@ const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
         }
 
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
         return { days, hours, minutes, seconds };
     };
 
-    const { t, i18n } = useTranslation();
-
+    const { t } = useTranslation();
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
     const numberFontSize = useBreakpointValue({ base: "2rem", md: "4rem", lg: "3.5rem" });
@@ -43,6 +38,9 @@ const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
     const formatTimeUnit = (unit: number) =>
         unit < 10 ? `0${unit}` : unit.toString();
 
+    // Define the keys to be used both for accessing timeLeft and for translation
+    const timeUnits: (keyof typeof timeLeft)[] = ["days", "hours", "minutes", "seconds"];
+
     return (
         <Box
             position="absolute"
@@ -53,8 +51,8 @@ const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
             padding="2rem"
             overflow="hidden"
         >
-            <Flex justifyContent="center" gap={5} >
-                {["days", "hours", "minutes", "seconds"].map((unit, index) => (
+            <Flex justifyContent="center" gap={5}>
+                {timeUnits.map((unit, index) => (
                     <motion.div
                         key={index}
                         whileHover={{ scale: 1.1, rotate: 7 }}
@@ -66,7 +64,6 @@ const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
                         }}
                     >
                         <Box
-                            key={index}
                             display="flex"
                             flexDirection="column"
                             alignItems="center"
@@ -86,10 +83,10 @@ const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
                             textAlign="center"
                         >
                             <Text fontSize={numberFontSize}>
-                                {formatTimeUnit(timeLeft[unit as keyof typeof timeLeft])}
+                                {formatTimeUnit(timeLeft[unit])}
                             </Text>
                             <Text fontSize={textFontSize} textTransform="capitalize">
-                                {unit.charAt(0).toUpperCase() + unit.slice(1)}
+                                {t(unit)}
                             </Text>
                         </Box>
                     </motion.div>
@@ -100,4 +97,3 @@ const CountdownTimer: React.FC<{ eventStartTime: Date }> = ({
 };
 
 export default CountdownTimer;
-

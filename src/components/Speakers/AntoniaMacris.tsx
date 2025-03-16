@@ -4,8 +4,11 @@ import { antonia_macris } from "../../assets";
 import { motion } from "framer-motion";
 import BlockSpeakerProfiles from "../BlockSpeakerProfiles";
 import MyNavbar from "../MyNavbar";
+import { useTranslation } from "react-i18next";
 
 const AntoniaMacris: React.FC = () => {
+    const { t } = useTranslation();
+
     const [boxLoaded, setBoxLoaded] = useState(false);
 
     const handleBoxLoad = () => {
@@ -27,25 +30,12 @@ const AntoniaMacris: React.FC = () => {
                 <MyNavbar />
                 <BlockSpeakerProfiles
                     name="Antonia Macris"
-                    title="Manager of Corporate Learning, Environment and Climate Change Canada"
-                    biography={`Antonia Macris is an interdisciplinary and trailblazing young professional, holding a Master of Arts in 
-                        Educational Technology and Master of Environment from Concordia University, and a Graduate Diploma in Public 
-                        Relations and Communications Management from McGill University. She works for the Government of Canada as Manager 
-                        of Corporate Learning and Co-Chair of the National Youth Network at Environment and Climate Change Canada. 
-                        Her past work experiences include the United Nations Environment Programme and McGill and Concordia Universities, 
-                        where she developed student-alumni professional development and experiential learning opportunities. Her 
-                        interests focused on advancing global environmental education and sustainable behaviour change communication 
-                        across corporate, national and international sectors. Antonia has volunteered with multiple and diverse 
-                        organizations for over a decade, including as current President of the Hellenic Initiative Canada Montreal New 
-                        Leaders, Youth Secretary of the Hellenic Community of Greater Montreal, Canadian Non-Profit Director of the 
-                        National Hellenic Students Association and Board Member of the Hellenic Scholarships Foundation. In 2025, 
-                        Antonia was awarded the King Charles III Coronation Medal at the Senate of Canada and the National Assembly 
-                        Medal for her youth leadership and community service contributions toward positively shaping the next generation 
-                        of leaders across Canada and abroad. `}
+                    title={t("antoniaMacrisTitle")}
+                    biography={t(`antoniaMacrisBio`)}
                     image={antonia_macris}
                     linkedinAddress="https://www.linkedin.com/in/antoniamacris/"
                     emailAddress=""
-                    twitterAddress=""
+                    twitterAddress="https://x.com/"
                 />
                 <BlockFooter />
             </motion.div>

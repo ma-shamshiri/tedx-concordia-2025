@@ -4,8 +4,11 @@ import { rashida_geddes } from "../../assets";
 import { motion } from "framer-motion";
 import BlockSpeakerProfiles from "../BlockSpeakerProfiles";
 import MyNavbar from "../MyNavbar";
+import { useTranslation } from "react-i18next";
 
 const RashidaGeddes: React.FC = () => {
+    const { t } = useTranslation();
+
     const [boxLoaded, setBoxLoaded] = useState(false);
 
     const handleBoxLoad = () => {
@@ -27,18 +30,12 @@ const RashidaGeddes: React.FC = () => {
                 <MyNavbar />
                 <BlockSpeakerProfiles
                     name="Rashida Geddes"
-                    title="Leadership & Career Coach and Senior Talent Leader"
-                    biography={`Rashida Geddes is a Leadership & Career Coach and Senior Talent Leader committed to helping 
-                        professionals overcome barriers, clarify goals, and unlock their potential! She has partnered with 
-                        organizations like BMO, Bell, Meta, and HP to find, engage, and hire top talent. Her insights have 
-                        been featured on Bell TV1, Rogers, and CBC Canada, as well as at Harvard Business School, where she 
-                        empowers Millennials and Gen Z to own their brilliance and leverage their lived experiences. 
-                        Through her coaching, speaking, and training, Rashida is shaping the next generation of leaders to 
-                        create meaningful impact in their careers and organizations.`}
+                    title={t("rashidaGeddesTitle")}
+                    biography={t(`rashidaGeddesTitleBio`)}
                     image={rashida_geddes}
                     linkedinAddress="https://www.linkedin.com/in/rashidageddes"
                     emailAddress=""
-                    twitterAddress=""
+                    twitterAddress="https://x.com/"
                 />
                 <BlockFooter />
             </motion.div>

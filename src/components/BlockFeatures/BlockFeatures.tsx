@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import {
   Box,
   Link as ChakraLink,
-  Flex,
   Grid,
   Image,
   Text,

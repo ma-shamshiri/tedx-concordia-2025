@@ -23,22 +23,22 @@ const BlockEvent: React.FC = () => {
 
   const tickets = [
     {
-      title: "Student Pass",
+      title: "studentPass",
       price: "$7.99",
-      description: "Available until Mar 10",
+      description: "onlyForStudents",
       link: "https://www.zeffy.com/en-CA/ticketing/tedx-concordia-university",
     },
     {
-      title: "General Admission",
+      title: "generalAdmission",
       price: "$14.99",
       description:
-        "Full access to all talks",
+        "fullAccessToAllTalks",
       link: "https://www.zeffy.com/en-CA/ticketing/tedx-concordia-university",
     },
     {
-      title: "Front Row Seats",
+      title: "frontRowSeats",
       price: "$19.99",
-      description: "Premium seating",
+      description: "premiumSeating",
       link: "https://www.zeffy.com/en-CA/ticketing/tedx-concordia-university",
     },
   ];
@@ -122,7 +122,7 @@ const BlockEvent: React.FC = () => {
             color="#fff"
           >
             <Typed
-              strings={[t("March 30, 2025")]}
+              strings={[t("eventDate")]}
               typeSpeed={50}
               backSpeed={20}
               loop
@@ -179,7 +179,7 @@ const BlockEvent: React.FC = () => {
                   color="#fff"
                   marginBottom="1.5rem"
                 >
-                  {ticket.title}
+                  {t(ticket.title)}
                 </Text>
 
                 <Text
@@ -196,7 +196,7 @@ const BlockEvent: React.FC = () => {
                   color="#fff"
                   marginBottom="1.5rem"
                 >
-                  {ticket.description}
+                  {t(ticket.description)}
                 </Text>
 
                 <Button
@@ -214,7 +214,7 @@ const BlockEvent: React.FC = () => {
                   }}
                   onClick={() => window.open(ticket.link, "_blank")}
                 >
-                  Buy Ticket
+                  {t("buyTicket")}
                 </Button>
               </Box>
             ))}

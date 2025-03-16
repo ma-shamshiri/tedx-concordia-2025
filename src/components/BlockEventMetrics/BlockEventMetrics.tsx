@@ -85,21 +85,21 @@ export const BlockEventMetrics: React.FC = () => {
           {[
             {
               endNumber: 6,
-              text: t("Speakers"),
+              text: t("speakers"),
               numberColor: "#4CCFAF",
               borderColor: "#409F8F",
               hasPlusSign: false,
             },
             {
               endNumber: 100,
-              text: t("Attendees"),
+              text: t("attendees"),
               numberColor: "#A679FF",
               borderColor: "#A679FF",
               hasPlusSign: true,
             },
             {
               endNumber: 6,
-              text: t("Core Team"),
+              text: t("coreTeam"),
               numberColor: "#FF5FCC",
               borderColor: "#EF40BA",
               hasPlusSign: false,
@@ -119,7 +119,7 @@ export const BlockEventMetrics: React.FC = () => {
               endNumber={endNumber}
               text={text}
               hasPlusSign={hasPlusSign}
-              textSize={{ base: "1.8rem", md: "1.8rem", lg: "1.8rem", xl: "2rem" }}
+              textSize={{ base: "1.8rem", md: "1.8rem", lg: "1.8rem", xl: "1.8rem" }}
               textColor={{ light: "white", dark: "white" }}
               numberFontSize={{ base: "2.8rem", md: "3.5rem", lg: "3.2rem", xl: "3.5rem" }}
               borderColor={{

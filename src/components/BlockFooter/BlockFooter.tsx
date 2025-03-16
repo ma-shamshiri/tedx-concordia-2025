@@ -26,7 +26,7 @@ export const BlockFooter: React.FC = () => {
 
   const sections = [
     {
-      title: "Programs",
+      title: "programs",
       links: [
         { label: "TED", href: "/" },
         { label: "TEDx", href: "/" },
@@ -34,19 +34,19 @@ export const BlockFooter: React.FC = () => {
       ],
     },
     {
-      title: "Event",
+      title: "event",
       links: [
-        { label: "Ticket", href: "/event" },
-        { label: "Date & Time", href: "/event" },
+        { label: "ticket", href: "/event" },
+        { label: "dateAndTime", href: "/event" },
         // { label: "Photos", href: "/photos" },
         // { label: "Talks", href: "/photos" },
       ],
     },
     {
-      title: "Our Community",
+      title: "ourCommunity",
       links: [
-        { label: "Organizing Team", href: "/team" },
-        { label: "Esteemed Speakers", href: "/speakers" },
+        { label: "organizingTeam", href: "/team" },
+        { label: "esteemedSpeakers", href: "/speakers" },
         // { label: "Generous Sponsors", href: "/sponsors" },
       ],
     },
@@ -59,7 +59,7 @@ export const BlockFooter: React.FC = () => {
     //   ],
     // },
     {
-      title: "Follow Us",
+      title: "followUs",
       links: [
         { label: "LinkedIn", href: "https://www.linkedin.com/company/tedxconcordiauniversity/", target: "_blank" },
         { label: "Instagram", href: "https://www.instagram.com/tedxconcordiauniversity?igsh=b3NpZDF1bTg3bXo2", target: "_blank" },
