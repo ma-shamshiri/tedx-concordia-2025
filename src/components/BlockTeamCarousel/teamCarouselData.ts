@@ -247,7 +247,7 @@ export const teamData = [
 
     /* ======================== Mohammad Amin Shamshiri ======================== */
     {
-        name: `Mohammad Amin Shamshiri`,
+        name: `Amin Shamshiri`,
         title: `Software Engineer | EnerZam Inc.`,
         avatarUrl: `${aminBG}`,
         profileUrl: `/tedx-2023/amin-shamshiri`,

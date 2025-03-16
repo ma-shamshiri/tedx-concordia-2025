@@ -90,7 +90,7 @@ export const teamMembersData: TeamMember[] = [
     },
     {
         id: 7,
-        name: "Mohammad Amin Shamshiri",
+        name: "Amin Shamshiri",
         title: "Website Designer",
         image: aminNewNoBG,
         profileHref: "amin-shamshiri",

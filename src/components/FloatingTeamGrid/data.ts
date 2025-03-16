@@ -223,9 +223,9 @@ export const slides = [
         id: "19",
         imageSrc: aminBG,
         profileSrc: "/amin-shamshiri",
-        firstName: "Mohammad Amin",
+        firstName: "Amin",
         lastName: "Shamshiri",
-        fullName: "Mohammad Amin Shamshiri",
+        fullName: "Amin Shamshiri",
         role: "Webmaster"
     }
 ];
