@@ -98,7 +98,11 @@ export const BlockEventMetrics: React.FC = () => {
               hasPlusSign: true,
             },
             {
+<<<<<<< HEAD
               endNumber: 5,
+=======
+              endNumber: 6,
+>>>>>>> 9d1e6b8fdc0e744a21d282a6950e617668a90360
               text: t("coreTeam"),
               numberColor: "#FF5FCC",
               borderColor: "#EF40BA",

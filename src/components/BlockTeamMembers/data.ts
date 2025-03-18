@@ -58,6 +58,7 @@ export const teamMembersData: TeamMember[] = [
         emailAddress: "",
         twitterAddress: "",
     },
+<<<<<<< HEAD
     // {
     //     id: 4,
     //     name: "Divyanshu Jaggi",
@@ -68,6 +69,18 @@ export const teamMembersData: TeamMember[] = [
     //     emailAddress: "",
     //     twitterAddress: "",
     // },
+=======
+    {
+        id: 4,
+        name: "Divyanshu Jaggi",
+        title: "Operations",
+        image: divyanshu_jaggi_NoBG,
+        profileHref: "divyanshu-jaggi",
+        linkedinAddress: "https://linkedin.com/in/divyanshu-jaggi",
+        emailAddress: "",
+        twitterAddress: "",
+    },
+>>>>>>> 9d1e6b8fdc0e744a21d282a6950e617668a90360
     {
         id: 5,
         name: "Moksh Sood",
