@@ -91,7 +91,7 @@ const BlockTeamMembers: React.FC = () => {
                 <SimpleGrid
                     columns={{ base: 1, md: 2, lg: 3 }}
                     spacingX="5rem"
-                    spacingY={{ base: "12rem", lg: "10rem" }}
+                    spacingY={{ base: "12rem", lg: "20rem" }}
                     maxW="1200px"
                     width="100%"
                     height='fit-content'
@@ -101,7 +101,7 @@ const BlockTeamMembers: React.FC = () => {
                     paddingBottom={{ base: "15rem", lg: "40rem" }}
                 >
                     {teamMembersData.map((teamMember, index) => {
-                        const offset = index % 2 === 0 ? "0px" : "80px";
+                        const offset = index % 2 === 0 ? "0px" : "-80px";
 
                         return (
                             <Box

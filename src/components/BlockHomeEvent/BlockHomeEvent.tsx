@@ -44,8 +44,8 @@ const BlockHomeEvent: React.FC = () => {
     ];
 
     const overlayBg = useColorModeValue(
-        "linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))",
-        "linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7))"
+        "linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6))",
+        "linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6))"
     );
     const glassBg = useColorModeValue("rgba(0, 0, 0, 0.5)", "rgba(0, 0, 0, 0.5)");
     const waveFill = useColorModeValue("#CB0000", "#CB0000");
@@ -57,7 +57,7 @@ const BlockHomeEvent: React.FC = () => {
             minHeight="93vh"
             paddingBottom="4rem"
             bgColor={useColorModeValue("gray.50", "gray.800")}
-            backgroundImage={concordiaHero13}
+            backgroundImage={salon5}
             backgroundSize="cover"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
@@ -74,7 +74,7 @@ const BlockHomeEvent: React.FC = () => {
             overflow="hidden"
         >
             {/* Decorative wave at the bottom */}
-            <Box
+            {/* <Box
                 as="svg"
                 viewBox="0 0 1440 320"
                 position="absolute"
@@ -89,7 +89,7 @@ const BlockHomeEvent: React.FC = () => {
                     fillOpacity="1"
                     d="M0,192L48,192C96,192,192,192,288,208C384,224,480,256,576,266.7C672,277,768,267,864,256C960,245,1056,235,1152,197.3C1248,160,1344,96,1392,64L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
                 />
-            </Box>
+            </Box> */}
 
             {/* Main content container */}
             <Flex

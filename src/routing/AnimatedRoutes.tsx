@@ -1,7 +1,7 @@
 import React from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useLocation, Routes, Route } from 'react-router-dom';
-import EventPage from "./EventPage";
+// import EventPage from "./EventPage";
 import HomePage from "./HomePage";
 import MediaPage from "./MediaPage";
 import SpeakersPage from "./SpeakersPage";
@@ -13,7 +13,7 @@ import RashidaGeddes from '../components/Speakers/RashidaGeddes';
 import AntoniaMacris from '../components/Speakers/AntoniaMacris';
 import GeoffreyReid from '../components/Speakers/GeoffreyReid';
 import AminShamshiri from '../components/TeamMembers/AminShamshiri';
-import AdityaThakkar from '../components/TeamMembers/AdityaThakkar';
+// import AdityaThakkar from '../components/TeamMembers/AdityaThakkar';
 import DivyanshuJaggi from '../components/TeamMembers/DivyanshuJaggi';
 import MahimurRahmanKhan from '../components/TeamMembers/MahimurRahmanKhan';
 import MokshSood from '../components/TeamMembers/MokshSood';
@@ -28,7 +28,7 @@ const AnimatedRoutes: React.FC = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/photos/" element={<MediaPage />} />
-        <Route path="/event/" element={<EventPage />} />
+        {/* <Route path="/event/" element={<EventPage />} /> */}
 
         <Route path="/team/" element={<TeamPage />} />
         <Route path="/team/amin-shamshiri" element={<AminShamshiri />} />

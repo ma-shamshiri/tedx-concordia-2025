@@ -148,9 +148,9 @@ const MyNavbar: React.FC = () => {
                             <SliderText text={t("home")} />
                         </Link>
 
-                        <Link as={RouterLink} to={"/event"} cursor="pointer">
+                        {/* <Link as={RouterLink} to={"/event"} cursor="pointer">
                             <SliderText text={t("event")} />
-                        </Link>
+                        </Link> */}
 
                         <Link as={RouterLink} to={"/speakers"} cursor="pointer">
                             <SliderText text={t("speakers")} />
