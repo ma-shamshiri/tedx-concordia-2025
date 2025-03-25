@@ -10,7 +10,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 const OrkenWorld: React.FC = () => {
     const { t, i18n } = useTranslation();
-    
+
     const cards = [
         {
             id: 1,
@@ -231,6 +231,16 @@ const OrkenWorld: React.FC = () => {
                         height="100%"
                         objectFit="cover"
                     />
+                    <Text
+                        position="absolute"
+                        bottom={5}
+                        left={5}
+                        color="white"
+                        fontSize={{ base: "1rem", lg: "1.5rem" }}
+                    // fontWeight="bold"
+                    >
+                        Image credit: [https://www.concordia.ca/maps/buildings/ev.html]
+                    </Text>
                     <Box
                         position="absolute"
                         width="100%"
@@ -249,8 +259,8 @@ const OrkenWorld: React.FC = () => {
                     top="0"
                     left="0"
                     // transform="translate(-50%, -50%)"
-                    width={{base:"300%", lg:"300%"}}
-                    height={{base:"100vh", lg:"100vh"}}
+                    width={{ base: "300%", lg: "300%" }}
+                    height={{ base: "100vh", lg: "100vh" }}
                     display="flex"
                     justifyContent="space-around"
                     alignItems="center"

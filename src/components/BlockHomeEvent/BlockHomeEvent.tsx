@@ -73,6 +73,16 @@ const BlockHomeEvent: React.FC = () => {
             }}
             overflow="hidden"
         >
+            <Text
+                position="absolute"
+                bottom={5}
+                left={5}
+                color="gray"
+                fontSize={{ base: "1rem", lg: "1.5rem" }}
+                // fontWeight="bold"
+            >
+                Image credit: [https://www.wpbmagazine.com/kravis-centers-arts-education-program/]
+            </Text>
             {/* Decorative wave at the bottom */}
             {/* <Box
                 as="svg"
