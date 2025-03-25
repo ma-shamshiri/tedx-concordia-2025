@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BlockEventMetrics } from "../components/BlockEventMetrics";
 import { BlockFooter } from "../components/BlockFooter"
 import { motion } from "framer-motion";
-import BlockEvent from "../components/BlockEvent";
 import MyNavbar from "../components/MyNavbar";
 import OrkenWorld from "../components/OrkenWorld/OrkenWorld";
 import BlockHomeEvent from "../components/BlockHomeEvent";
